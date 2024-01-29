@@ -11,7 +11,7 @@
 <template>
 
   <h5>
-    Have fun :)
+    Footer!!
   </h5>
   
 </template>
