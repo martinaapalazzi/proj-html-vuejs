@@ -18,20 +18,10 @@
       AppFooter
     },
     methods: {
+
     },
     mounted() {
-      axios
-        .get(this.store.baseUrl)
-        .then((response)=> {
-          console.log('api response: ', response);
-          this.store.cards = response.data.data;
-        }),
-      axios
-        .get(this.store.archetypesUrl)
-        .then((response)=> {
-          console.log('api archetype response: ', response);
-          this.store.archetypes = response.data;
-        })
+      
     },
   }
 </script>
