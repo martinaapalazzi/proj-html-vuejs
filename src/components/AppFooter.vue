@@ -9,6 +9,10 @@
 </script>
 
 <template>
+
+  <h5>
+    Have fun :)
+  </h5>
   
 </template>
 

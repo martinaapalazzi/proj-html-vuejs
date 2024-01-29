@@ -20,8 +20,10 @@
 
 <template>
 
+  <h3>
+    This is our project!
+  </h3>
 
-  
 </template>
 
 <style lang="scss" scoped>
