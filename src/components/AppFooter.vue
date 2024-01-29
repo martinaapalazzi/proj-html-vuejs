@@ -7,7 +7,7 @@ export default {
 </script>
 
 <template>
-  <h5>Have fun :)</h5>
+  <h5>Footer!!</h5>
 </template>
 
 <style lang="scss" scoped></style>
