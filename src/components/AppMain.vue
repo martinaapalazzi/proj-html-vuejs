@@ -16,12 +16,12 @@ export default {
       ],
       activeSlideIndex: 0,
       secondSectionImg: [
-        { imgPath: "/src/assets/img/fe1.jpg" },
-        { imgPath: "/src/assets/img/fe2.jpg" },
-        { imgPath: "/src/assets/img/fe3.jpg" },
-        { imgPath: "/src/assets/img/fe1.jpg" },
-        { imgPath: "/src/assets/img/fe2.jpg" },
-        { imgPath: "/src/assets/img/fe3.jpg" },
+        { imgPath: "/src/assets/img/fe1.jpg", text: "Fresh Juice" },
+        { imgPath: "/src/assets/img/fe2.jpg", text: "Fresh Fruits" },
+        { imgPath: "/src/assets/img/fe3.jpg", text: "Dairy Items" },
+        { imgPath: "/src/assets/img/fe1.jpg", text: "Vegetable" },
+        { imgPath: "/src/assets/img/fe2.jpg", text: "Organic orange" },
+        { imgPath: "/src/assets/img/fe3.jpg", text: "Fresh Juice" },
       ],
     };
   },
@@ -130,7 +130,19 @@ export default {
               v-for="(elem, i) in secondSectionImg"
               :class="{ 'col-3': i >= 0 && i < 4 }"
             >
-              <div v-if="i >= 0 && i < 4">
+              <div
+                v-if="i >= 0 && i < 4"
+                class="position-relative img-container"
+              >
+                <div class="overlay">
+                  <div
+                    class="h-100 d-flex justify-content-center align-items-end"
+                  >
+                    <h2 class="text-white pb-3">
+                      {{ elem.text }}
+                    </h2>
+                  </div>
+                </div>
                 <img :src="secondSectionImg[i].imgPath" alt="" />
               </div>
             </div>
@@ -280,6 +292,20 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+  }
+  .img-container:hover .overlay {
+    display: block;
   }
 }
 </style>
