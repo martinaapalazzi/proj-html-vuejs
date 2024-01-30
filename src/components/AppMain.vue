@@ -23,6 +23,13 @@ export default {
         { imgPath: "/src/assets/img/fe2.jpg", text: "Organic orange" },
         { imgPath: "/src/assets/img/fe3.jpg", text: "Fresh Juice" },
       ],
+      thirdSectionMainItemsList: [
+        "All Product",
+        "Apple",
+        "Food",
+        "Orange",
+        "Vegetable",
+      ],
     };
   },
   components: {},
@@ -157,7 +164,22 @@ export default {
       </div>
     </section>
     <section id="third-section">
-      <div class="container"></div>
+      <div class="container mb-5">
+        <h4 class="text-center my-orange pt-5">Trending online store</h4>
+        <h1 class="text-center text-white pt-3">
+          GOGRIN ALL <span class="my-orange">ORGANIC</span> FOOD
+        </h1>
+        <div class="d-flex justify-content-center mt-5">
+          <ul class="d-flex p-0">
+            <li
+              v-for="(elem, i) in thirdSectionMainItemsList"
+              class="ms-3 me-3"
+            >
+              {{ elem }}
+            </li>
+          </ul>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -249,6 +271,7 @@ export default {
   }
 }
 #second-section {
+  font-family: "Barlow Condensed", sans-serif;
   .my-container {
     width: 70vw;
     margin: 0 auto;
@@ -313,6 +336,28 @@ export default {
   }
   .img-container:hover .overlay {
     display: block;
+  }
+}
+#third-section {
+  font-family: "Barlow Condensed", sans-serif;
+  .container {
+    min-height: 1700px;
+    background-image: url("../assets/img/shop-bg-img.jpg");
+    background-size: cover;
+    h1 {
+      font-weight: bold;
+    }
+    ul {
+      list-style-type: none;
+      li {
+        color: white;
+        cursor: pointer;
+      }
+      li:hover {
+        color: $mainOrange;
+        transition: 1s;
+      }
+    }
   }
 }
 </style>
