@@ -17,20 +17,16 @@ export default {
       activeSlideIndex: 0,
       secondSectionImg: [
         {
+          visible: true,
           imgPath: "/src/assets/img/fe1.jpg",
         },
         {
+          visible: true,
           imgPath: "/src/assets/img/fe2.jpg",
         },
-        {
-          imgPath: "/src/assets/img/fe3.jpg",
-        },
-        {
-          imgPath: "/src/assets/img/fe1.jpg",
-        },
-        {
-          imgPath: "/src/assets/img/fe2.jpg",
-        },
+        { visible: true, imgPath: "/src/assets/img/fe3.jpg" },
+        { visible: true, imgPath: "/src/assets/img/fe1.jpg" },
+        { visible: false, imgPath: "/src/assets/img/fe2.jpg" },
       ],
     };
   },
@@ -49,6 +45,10 @@ export default {
       } else {
         this.activeSlideIndex = this.sliderImg.length - 1;
       }
+    },
+    nextPhotoTwo() {
+      this.secondSectionImg[0].visible = false;
+      this.secondSectionImg[4].visible = true;
     },
   },
 };
@@ -111,15 +111,18 @@ export default {
           </div>
         </div>
         <div class="row position-relative">
-          <div v-for="(elem, i) in secondSectionImg" class="col-3">
-            <div v-if="i < secondSectionImg.length - 1">
+          <div
+            v-for="(elem, i) in secondSectionImg"
+            :class="{ 'col-3': elem.visible }"
+          >
+            <div v-if="elem.visible">
               <img :src="secondSectionImg[i].imgPath" alt="" />
             </div>
           </div>
           <div class="previous-button">
             <i class="fa-solid fa-chevron-left"></i>
           </div>
-          <div class="next-button">
+          <div @click="nextPhotoTwo" class="next-button">
             <i class="fa-solid fa-chevron-right"></i>
           </div>
         </div>
