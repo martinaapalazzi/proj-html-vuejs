@@ -97,8 +97,8 @@ export default {
         </div>
       </div>
     </section>
-    <section id="second-section">
-      <div class="container">
+    <section id="second-section" class="mb-5">
+      <div class="my-container">
         <div class="row mb-3">
           <div class="col-6">
             <h1 class="my-green">
@@ -155,6 +155,9 @@ export default {
           </div>
         </div>
       </div>
+    </section>
+    <section id="third-section">
+      <div class="container"></div>
     </section>
   </div>
 </template>
@@ -246,6 +249,10 @@ export default {
   }
 }
 #second-section {
+  .my-container {
+    width: 70vw;
+    margin: 0 auto;
+  }
   h1 {
     font-weight: bold;
   }
