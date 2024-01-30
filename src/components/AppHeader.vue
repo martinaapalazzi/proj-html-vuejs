@@ -9,7 +9,29 @@ export default {
       navbar: [
         {
           linkName: "HOME",
-          link: "#"
+          link: "#",
+          dropdown: [
+        {
+          dropdownName: "Home-1",
+          dropdownLink: "home"
+        },
+        {
+          dropdownName: "Home-2",
+          dropdownLink: "home"
+        },
+        {
+          dropdownName: "Home-3",
+          dropdownLink: "home"
+        },
+        {
+          dropdownName: "Home-landing",
+          dropdownLink: "home"
+        },
+        {
+          dropdownName: "Home-video",
+          dropdownLink: "home"
+        },
+      ]
         },
         {
           linkName: "ABOUT",
@@ -144,6 +166,14 @@ export default {
                   <span>
                     <i class="fa-solid fa-chevron-down"></i>
                   </span>
+                  <div class="dropdown">
+                    <ul>
+                      <li>sottomenu 1</li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                    </ul>
+                  </div>
                 </li>
                 <!--<div class="dropdown-content">
                   <ul>
@@ -301,6 +331,9 @@ export default {
     }
   }
   .bottom-header {
+    position: sticky;
+    background-color: white;
+    top: 0px;
     height: 100px;
     display: flex;
     align-items: center;

@@ -312,6 +312,7 @@ export default {
     display: none;
   }
   .img-container:hover .overlay {
+    
     display: block;
   }
 }
