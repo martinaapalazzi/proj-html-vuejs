@@ -1,26 +1,12 @@
 <script>
 export default {
-    data() {
-      return {
-        
-      }
-    },
-    props: {
-      
-    }
-}
-
+  data() {
+    return {};
+  },
+  props: {},
+};
 </script>
 
-<template>
+<template></template>
 
-
-
-
-</template>
-
-<style lang="scss" scoped>
-
-
-
-</style>
+<style lang="scss" scoped></style>
