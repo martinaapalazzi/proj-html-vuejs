@@ -6,10 +6,34 @@ export default {
   data() {
     return {
       store,
+      sliderImg: [
+        {
+          imgPath: "/src/assets/img/slider.jpg",
+        },
+        {
+          imgPath: "/src/assets/img/H3-slider3.jpg",
+        },
+      ],
+      activeSlideIndex: 0,
     };
   },
   components: {},
-  methods: {},
+  methods: {
+    nextPhoto() {
+      if (this.activeSlideIndex < this.sliderImg.length - 1) {
+        this.activeSlideIndex++;
+      } else {
+        this.activeSlideIndex = 0;
+      }
+    },
+    previousPhoto() {
+      if (this.activeSlideIndex > 0) {
+        this.activeSlideIndex--;
+      } else {
+        this.activeSlideIndex = this.sliderImg.length - 1;
+      }
+    },
+  },
 };
 </script>
 
@@ -17,18 +41,29 @@ export default {
   <div class="home-page-container">
     <section id="first-section">
       <div class="slider-container">
-        <div class="img-container">
-          <img class="h-100" src="../assets/img/slider.jpg" alt="" />
-          <div class="previous-button text-white">
-            <i class="fa-solid fa-chevron-left"></i>
-          </div>
-          <div class="next-button text-white">
-            <i class="fa-solid fa-chevron-right"></i>
+        <div v-for="(elem, i) in sliderImg">
+          <div v-if="i == activeSlideIndex" class="img-container">
+            <img class="h-100" :src="elem.imgPath" alt="" />
+            <div @click="previousPhoto()" class="previous-button text-white">
+              <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div @click="nextPhoto()" class="next-button text-white">
+              <i class="fa-solid fa-chevron-right"></i>
+            </div>
+            <div class="title-container text-white text-center">
+              <h5>GOGRIN ORGANIC FOOD STORE</h5>
+              <h1 class="mb-3">
+                Eating naturally & organic is always be healthy
+              </h1>
+              <button class="about-us-button border-0 me-2 text-white">
+                ABOUT US
+              </button>
+              <button class="our-history-button border-0 ms-2 text-white">
+                OUR HISTORY
+              </button>
+            </div>
           </div>
         </div>
-        <!-- <div class="img-container">
-          <img class="h-100" src="../assets/img/H3-slider3.jpg" alt="" />
-        </div> -->
       </div>
     </section>
   </div>
@@ -77,6 +112,35 @@ export default {
         background-color: white;
         border-radius: 6px;
         transition: 0.7s;
+      }
+      .title-container {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        h1 {
+          font-size: 5em;
+        }
+        .about-us-button {
+          background-color: $mainOrange;
+          padding: 16px 50px;
+          border-top-right-radius: 20px;
+          border-bottom-left-radius: 20px;
+        }
+        .about-us-button:hover {
+          background-color: $mainGreen;
+          transition: 1s;
+        }
+        .our-history-button {
+          background-color: $mainGreen;
+          padding: 16px 50px;
+          border-top-right-radius: 20px;
+          border-bottom-left-radius: 20px;
+        }
+        .our-history-button:hover {
+          background-color: $mainOrange;
+          transition: 1s;
+        }
       }
     }
   }
