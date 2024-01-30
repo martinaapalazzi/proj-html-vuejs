@@ -1,12 +1,91 @@
 <script>
 import { store } from '../store';
+import appAboutPage from '../components/AppAboutPage.vue'
 
 export default {
   data() {
     return {
-      store
+      store,
+      navbar: [
+        {
+          linkName: "HOME",
+          link: "#"
+        },
+        {
+          linkName: "ABOUT",
+          link: "#"
+        },
+        {
+          linkName: "SERVICE",
+          link: "service"
+        },
+        {
+          linkName: "PORTFOLIO",
+          link: "portfolio"
+        },
+        {
+          linkName: "SHOP",
+          link: "shop"
+        },
+        {
+          linkName: "BLOG",
+          link: "blog"
+        },
+        {
+          linkName: "CONTACT",
+          link: "contact"
+        }
+      ],
+      dropdownHome: [
+        {
+          dropdownName: "Home-1",
+          dropdownLink: "home"
+        },
+        {
+          dropdownName: "Home-2",
+          dropdownLink: "home"
+        },
+        {
+          dropdownName: "Home-3",
+          dropdownLink: "home"
+        },
+        {
+          dropdownName: "Home-landing",
+          dropdownLink: "home"
+        },
+        {
+          dropdownName: "Home-video",
+          dropdownLink: "home"
+        },
+      ],
+      dropdownAbout: [
+      {
+          dropdownName: "About",
+          dropdownLink: "about"
+        },
+        {
+          dropdownName: "Team",
+          dropdownLink: "about"
+        },
+        {
+          dropdownName: "Pricing tables",
+          dropdownLink: "about"
+        },
+        {
+          dropdownName: "FAQ Pges",
+          dropdownLink: "about"
+        },
+        {
+          dropdownName: "Testimonials",
+          dropdownLink: "about"
+        },
+      ]
+
     };
   },
+  components: {
+    appAboutPage
+  }
 };
 </script>
 
@@ -54,10 +133,34 @@ export default {
     <div class="bottom-header">
       <div class="nav-side">
         <div>
-          LOGO
+          <img src="../assets/img/logo.png" alt="">
         </div>
         <div class="navbar-header">
-          <nav class="d-flex">
+          <div class="d-flex align-items-center gap-3">
+            <div>
+              <ul class="dropdown d-flex mb-0 gap-2">
+                <li v-for="(nav, index) in navbar" class="dropbtn me-2">
+                  {{ nav.linkName }}
+                  <span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </span>
+                </li>
+                <!--<div class="dropdown-content">
+                  <ul>
+                    <li v-for="(drop, index) in dropdownHome">
+                      {{ drop.dropdownName }}
+                    </li>
+                  </ul>
+                  <ul>
+                    <li v-for="(drop, index) in dropdownAbout">
+                      {{ drop.dropdownName }}
+                    </li>
+                  </ul>
+                </div> -->
+              </ul>
+            </div>
+          </div>
+          <!-- <nav class="d-flex">
             <div class="dropdown">
               <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Home
@@ -124,16 +227,16 @@ export default {
                 Contact
               </a>
             </div>
-          </nav>
+          </nav> -->
         </div>
       </div>
       <div class="shopping-side">
         <div>
           <i class="search fa-solid fa-magnifying-glass"></i>
         </div>
-        <div>
+        <div class="position-relative">
           <i class="cart fa-solid fa-cart-shopping"></i>
-          <div class="cart-list">
+          <div class="cart-list position-absolute top-0 start-100 translate-middle">
             0 
           </div>
         </div>
@@ -143,10 +246,8 @@ export default {
           </button>
         </div>
       </div>
-      
-
     </div>
-
+    <appAboutPage/>
   </div>
 
 
@@ -155,10 +256,12 @@ export default {
 <style lang="scss" scoped>
 
 .header-container {
+  position: relative;
   .top-header {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 0px 100px;
     background-color: #017166;
     height: 50px;
         
@@ -180,27 +283,25 @@ export default {
     }
 
     .right-side-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: white;
+
+      > div {
         display: flex;
         align-items: center;
-        gap: 20px;
-        color: white;
+        gap: 10px;
+      }
 
-        > div {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .icons-header i:hover {
-            color: black;
-            cursor: pointer;
-        }
-        
+      .icons-header i:hover {
+        color: black;
+        cursor: pointer;
+      }  
     }
   }
   .bottom-header {
     height: 100px;
-    background-color: rgba(0, 0, 0, 0.445);
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -209,14 +310,12 @@ export default {
         display: flex;
         align-items: center;
         justify-content: space-around;
-        gap: 50px;
 
-        a {
-            text-decoration: none;
-            color: black;
-        }
-        a:hover {
-          color: #EF9E05;
+        .dropdown {
+          list-style: none;
+          .dropbtn:hover {
+            color: #EF9E05;
+          }
         }
     }
     .shopping-side {
@@ -226,6 +325,7 @@ export default {
       gap: 20px;
 
       .search {
+        cursor: pointer;
         color: white;
         background-color: #EF9E05;
         text-align: center;
@@ -236,8 +336,8 @@ export default {
       }
 
       .cart {
+        cursor: pointer;
         color: #017166;
-        position: relative;
         font-size: 1.5em;
       }
 
@@ -248,9 +348,6 @@ export default {
         text-align: center;
         background-color: #EF9E05;
         border-radius: 50px;
-        position: absolute;
-        top: 9%;
-        right: 20%;
       }
 
       button {
@@ -266,10 +363,7 @@ export default {
         background-color: #017166;
         transition: 1s;
       }
-
-      
     }
-
   }
 }
 </style>
