@@ -3,10 +3,16 @@ export default {
   data() {
     return {};
   },
-  props: {},
+  props: {
+    path: String,
+  },
 };
 </script>
 
-<template></template>
+<template>
+  <div class="col-3">
+    <img :src="path" alt="" />
+  </div>
+</template>
 
 <style lang="scss" scoped></style>

@@ -1,6 +1,7 @@
 <script>
 import axios from "axios";
 import { store } from "../store.js";
+import SingleProductApp from "./SingleProductApp.vue";
 
 export default {
   data() {
@@ -32,7 +33,9 @@ export default {
       ],
     };
   },
-  components: {},
+  components: {
+    SingleProductApp,
+  },
   methods: {
     nextPhoto() {
       if (this.activeSlideIndex < this.sliderImg.length - 1) {
@@ -178,6 +181,13 @@ export default {
               {{ elem }}
             </li>
           </ul>
+        </div>
+        <div class="row">
+          <SingleProductApp
+            class="my-margin-bottom"
+            v-for="(elem, i) in store.food"
+            :path="elem.imgPath"
+          />
         </div>
       </div>
     </section>
@@ -335,7 +345,6 @@ export default {
     display: none;
   }
   .img-container:hover .overlay {
-    
     display: block;
   }
 }
@@ -357,6 +366,11 @@ export default {
       li:hover {
         color: $mainOrange;
         transition: 1s;
+      }
+    }
+    .row {
+      .my-margin-bottom {
+        margin-bottom: calc((var(--bs-gutter-x) * 0.5) * 2);
       }
     }
   }
