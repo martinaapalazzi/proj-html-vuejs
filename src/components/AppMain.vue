@@ -16,17 +16,12 @@ export default {
       ],
       activeSlideIndex: 0,
       secondSectionImg: [
-        {
-          visible: true,
-          imgPath: "/src/assets/img/fe1.jpg",
-        },
-        {
-          visible: true,
-          imgPath: "/src/assets/img/fe2.jpg",
-        },
-        { visible: true, imgPath: "/src/assets/img/fe3.jpg" },
-        { visible: true, imgPath: "/src/assets/img/fe1.jpg" },
-        { visible: false, imgPath: "/src/assets/img/fe2.jpg" },
+        { imgPath: "/src/assets/img/fe1.jpg" },
+        { imgPath: "/src/assets/img/fe2.jpg" },
+        { imgPath: "/src/assets/img/fe3.jpg" },
+        { imgPath: "/src/assets/img/fe1.jpg" },
+        { imgPath: "/src/assets/img/fe2.jpg" },
+        { imgPath: "/src/assets/img/fe3.jpg" },
       ],
     };
   },
@@ -47,8 +42,27 @@ export default {
       }
     },
     nextPhotoTwo() {
-      this.secondSectionImg[0].visible = false;
-      this.secondSectionImg[4].visible = true;
+      // input:  [3, 5, 1, 7, 9, 12]
+      // output: [12, 3, 5, 1, 7, 9]
+
+      // const items = [3, 5, 1, 7, 9, 12];
+      // items.slice(2, 4) // returns [1, 7]
+      // items.slice(1, 5) // returns [5, 1, 7, 9]
+
+      const lastItem = this.secondSectionImg[this.secondSectionImg.length - 1];
+      this.secondSectionImg = [
+        lastItem,
+        ...this.secondSectionImg.slice(0, this.secondSectionImg.length - 1),
+      ];
+    },
+    previousPhotoTwo() {
+      // input:  [3, 5, 1, 7, 9, 12]
+      // output: [5, 1, 7, 9, 12, 3]
+      const firstItem = this.secondSectionImg[0];
+      this.secondSectionImg = [
+        ...this.secondSectionImg.slice(1, this.secondSectionImg.length),
+        firstItem,
+      ];
     },
   },
 };
@@ -110,16 +124,18 @@ export default {
             </p>
           </div>
         </div>
-        <div class="row position-relative">
-          <div
-            v-for="(elem, i) in secondSectionImg"
-            :class="{ 'col-3': elem.visible }"
-          >
-            <div v-if="elem.visible">
-              <img :src="secondSectionImg[i].imgPath" alt="" />
+        <div class="hard-carousel-container position-relative">
+          <div class="row">
+            <div
+              v-for="(elem, i) in secondSectionImg"
+              :class="{ 'col-3': i >= 0 && i < 4 }"
+            >
+              <div v-if="i >= 0 && i < 4">
+                <img :src="secondSectionImg[i].imgPath" alt="" />
+              </div>
             </div>
           </div>
-          <div class="previous-button">
+          <div @click="previousPhotoTwo" class="previous-button">
             <i class="fa-solid fa-chevron-left"></i>
           </div>
           <div @click="nextPhotoTwo" class="next-button">
@@ -222,18 +238,48 @@ export default {
     font-weight: bold;
   }
   .previous-button {
-    // color: white;
+    width: 50px;
+    height: 50px;
+    color: white;
     font-size: 2em;
-    // position: absolute;
-    // top: 50%;
-    // transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: -25px;
+    transform: translateY(-50%);
+    background-color: $mainOrange;
+    cursor: pointer;
+    display: none;
+  }
+  .previous-button:hover {
+    background-color: $mainGreen;
+    transition: 1s;
   }
   .next-button {
-    // color: white;
+    width: 50px;
+    height: 50px;
+    color: white;
     font-size: 2em;
-    // position: absolute;
-    // top: 50%;
-    // transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    transform: translateY(-50%);
+    background-color: $mainOrange;
+    cursor: pointer;
+    display: none;
+  }
+  .next-button:hover {
+    background-color: $mainGreen;
+    transition: 1s;
+  }
+  .hard-carousel-container:hover .previous-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hard-carousel-container:hover .next-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 </style>
