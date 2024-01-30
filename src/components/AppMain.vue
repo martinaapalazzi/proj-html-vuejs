@@ -15,6 +15,23 @@ export default {
         },
       ],
       activeSlideIndex: 0,
+      secondSectionImg: [
+        {
+          imgPath: "/src/assets/img/fe1.jpg",
+        },
+        {
+          imgPath: "/src/assets/img/fe2.jpg",
+        },
+        {
+          imgPath: "/src/assets/img/fe3.jpg",
+        },
+        {
+          imgPath: "/src/assets/img/fe1.jpg",
+        },
+        {
+          imgPath: "/src/assets/img/fe2.jpg",
+        },
+      ],
     };
   },
   components: {},
@@ -68,7 +85,7 @@ export default {
     </section>
     <section id="second-section">
       <div class="container">
-        <div class="row">
+        <div class="row mb-3">
           <div class="col-6">
             <h1 class="my-green">
               <span class="my-orange">Look what</span> consumer power has done
@@ -91,6 +108,19 @@ export default {
               vehicle often helps to do that. I have a relationship to hosting
               culture.
             </p>
+          </div>
+        </div>
+        <div class="row position-relative">
+          <div v-for="(elem, i) in secondSectionImg" class="col-3">
+            <div v-if="i < secondSectionImg.length - 1">
+              <img :src="secondSectionImg[i].imgPath" alt="" />
+            </div>
+          </div>
+          <div class="previous-button">
+            <i class="fa-solid fa-chevron-left"></i>
+          </div>
+          <div class="next-button">
+            <i class="fa-solid fa-chevron-right"></i>
           </div>
         </div>
       </div>
@@ -187,6 +217,20 @@ export default {
 #second-section {
   h1 {
     font-weight: bold;
+  }
+  .previous-button {
+    // color: white;
+    font-size: 2em;
+    // position: absolute;
+    // top: 50%;
+    // transform: translateY(-50%);
+  }
+  .next-button {
+    // color: white;
+    font-size: 2em;
+    // position: absolute;
+    // top: 50%;
+    // transform: translateY(-50%);
   }
 }
 </style>
