@@ -1,9 +1,46 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      fruits: [
+        {
+          image: '/src/assets/img/cabbage.jpg',
+          name: 'Natural Cabbage'
+        },
+        {
+          image: '/src/assets/img/tomatos.jpg',
+          name: 'Fresh Tomato'
+        },
+        {
+          image: '/src/assets/img/spinach.jpg',
+          name: 'Organic Spinach'
+        },
+        {
+          image: '/src/assets/img/carrots.jpg',
+          name: 'Natural Carrots'
+        },
+        {
+          image: '/src/assets/img/cabbage.jpg',
+          name: 'Organic Grapes'
+        },
+        {
+          image: '/src/assets/img/tomatos.jpg',
+          name: 'Fresh Apple'
+        },
+        {
+          image: '/src/assets/img/spinach.jpg',
+          name: 'Natural Farming'
+        },
+        {
+          image: '/src/assets/img/carrots.jpg',
+          name: 'Organic Eggplant'
+        },
+      ]
+    };
   },
-  props: {},
+  props: {
+
+  },
 };
 </script>
 
@@ -30,33 +67,23 @@ export default {
     </div>
   </div>
 
-  <div class="first-paragraph d-flex">
-    <div>
-      <h6 class="orange">
+  <div class="first-paragraph d-flex align-items-center">
+    <div class="row">
+      <h6 class="orange col-4">
         Running week top selling
       </h6>
-      <div class="d-flex">
-        <h2>
-          Health is wealth: eat
-        </h2>
-        <h2 class="orange">
-          natural,
-        </h2>
-        <h2>
-          eat
-        </h2>
-        <h2 class="orange">
-          organic,
-        </h2>
-        <h2>
-          be healthy.
-        </h2>
-      </div>
+      <h2>
+        <span>Health is wealth – eat </span>
+        <span class="orange">natural, </span>
+        <span>eat </span>
+        <span class="orange">organic, </span>
+        <span>be healthy.</span>
+      </h2>
       <p class="mb-5">
         Organic is loaded with a sense of rightness, with a set of rules. I would much rather someone bought food that was local and sustainable but not organic than bought organic food that had to be shipped across the world.
       </p>
       <div class="d-flex">
-        <div>
+        <div class="me-4">
           <h5>
             All are handmade
           </h5>
@@ -92,8 +119,40 @@ export default {
         </button>
       </div>
     </div>
-    <div class="container-aside-img">
-      <img src="../assets/img/s7.jpg" alt="">
+    <div class="container-aside-img col-8">
+      <img src="../assets/img/about-img.jpg" alt="">
+    </div>
+  </div>
+
+  <div class="third-paragraph">
+    <div class="row d-flex justify-content-between">
+      <div class="col-4">
+        <h2>
+          <span>Our organic </span>
+          <span class="orange">fruits </span>
+          <span>& </span>
+          <span class="orange">vegetable</span>
+        </h2>
+        <div class="mb-5">
+          Organic is loaded with a sense of rightness, with a set of rules. I would much rather someone bought food that was local and sustainable but not organic than bought organic food.
+        </div>
+        <div>
+          <button>
+            ABOUT US
+          </button>
+        </div>
+      </div>
+      <div class="col-8 fruit-grid">
+        <div class="single-fruit-container" v-for="(fruit, index) in fruits" :key="index">
+          <div class="fruit-img-container">
+            <img :src="fruit.image" :alt="fruit.name">
+          </div>
+          <div>
+            {{ fruit.name }}
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </div>
@@ -108,6 +167,7 @@ export default {
     padding: 80px;
     height: 220px;
     background-image: url(../assets/img/breckum-img.jpg);
+    background-size: cover;
     object-fit: cover;
     .home-jumbo:hover {
       cursor: pointer;
@@ -117,7 +177,7 @@ export default {
   }
 }
 .first-paragraph {
-  width: 900px;
+  width: 1000px;
   padding: 50px 0px;
   margin: 0 auto;
   .container-aside-img {
@@ -130,7 +190,6 @@ export default {
   }
 
   button {
-    margin-left: 25px ;
     background-color: #EF9E05;
     color: white;
     padding: 15px;
@@ -144,4 +203,41 @@ export default {
   }
 }
 
+.third-paragraph {
+  width: 1000px;
+  padding: 50px 0px;
+  margin: 0 auto; 
+
+  .orange {
+    color: #EF9E05;
+  }
+  button {
+    background-color: #EF9E05;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 0px 20px 0px 20px;
+  }
+
+  button:hover {
+    background-color: #017166;
+    transition: 1s;
+  }
+  .fruit-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: calc(100% / 2);
+
+    .single-fruit-container {
+      width: 100px;
+      height: 150px;
+
+      .fruit-img-container {
+        width: 80px;
+      }
+    }
+  }
+}
 </style>
