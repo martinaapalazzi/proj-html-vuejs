@@ -172,7 +172,7 @@ export default {
         <h1 class="text-center text-white pt-3">
           GOGRIN ALL <span class="my-orange">ORGANIC</span> FOOD
         </h1>
-        <div class="d-flex justify-content-center mt-5">
+        <div class="d-flex justify-content-center mt-5 mb-5">
           <ul class="d-flex p-0">
             <li
               v-for="(elem, i) in thirdSectionMainItemsList"
@@ -182,12 +182,18 @@ export default {
             </li>
           </ul>
         </div>
-        <div class="row">
+        <div class="row ps-5 pe-5">
           <SingleProductApp
             class="my-margin-bottom"
             v-for="(elem, i) in store.food"
             :path="elem.imgPath"
+            :name="elem.name"
+            :price="elem.price"
+            :oldPrice="elem.oldPrice"
           />
+        </div>
+        <div class="d-flex justify-content-center">
+          <button class="border-0 me-2 text-white">ALL PRODUCTS</button>
         </div>
       </div>
     </section>
@@ -373,6 +379,16 @@ export default {
         margin-bottom: calc((var(--bs-gutter-x) * 0.5) * 2);
       }
     }
+  }
+  button {
+    background-color: $mainOrange;
+    padding: 16px 50px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+  button:hover {
+    background-color: $mainGreen;
+    transition: 1s;
   }
 }
 </style>
