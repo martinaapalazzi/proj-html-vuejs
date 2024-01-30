@@ -14,9 +14,10 @@ export default {
 </script>
 
 <template>
-  <div>
-    <h1>Daniele scrive: questo è il main</h1>
-  </div>
+  
+
+
+  
 </template>
 
 <style lang="scss" scoped></style>
