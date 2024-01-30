@@ -39,7 +39,7 @@ export default {
 
 <template>
   <div class="home-page-container">
-    <section id="first-section">
+    <section id="first-section" class="mb-5">
       <div class="slider-container">
         <div v-for="(elem, i) in sliderImg">
           <div v-if="i == activeSlideIndex" class="img-container">
@@ -66,12 +66,51 @@ export default {
         </div>
       </div>
     </section>
+    <section id="second-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+            <h1 class="my-green">
+              <span class="my-orange">Look what</span> consumer power has done
+              with <span class="my-orange">organic food</span>; we can do the
+              same with clothes.
+            </h1>
+          </div>
+          <div class="col-6">
+            <p>
+              I have a need to make these sorts of connections literal
+              sometimes, and a vehicle often helps to do that. I have a
+              relationship to hosting culture.
+              <span class="my-orange"
+                >It isn't really about it helps to do that. I have a
+                relationship to hosting culture.</span
+              >
+            </p>
+            <p>
+              Need to make these sorts of connections literal sometimes, and a
+              vehicle often helps to do that. I have a relationship to hosting
+              culture.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <style lang="scss" scoped>
 @use "../assets/scss/partials/variables.scss" as *;
+// GENERAL
+.my-orange {
+  color: $mainOrange;
+}
+.my-green {
+  color: $mainGreen;
+}
+
 #first-section {
+  font-family: "Barlow Condensed", sans-serif;
+
   .slider-container {
     .img-container {
       height: 950px;
@@ -143,6 +182,11 @@ export default {
         }
       }
     }
+  }
+}
+#second-section {
+  h1 {
+    font-weight: bold;
   }
 }
 </style>
