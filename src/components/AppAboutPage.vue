@@ -4,36 +4,58 @@ export default {
     return {
       fruits: [
         {
-          image: '/src/assets/img/cabbage.jpg',
+          image: '/src/assets/img/cabbage-1.png',
           name: 'Natural Cabbage'
         },
         {
-          image: '/src/assets/img/tomatos.jpg',
+          image: '/src/assets/img/tomato-1.png',
           name: 'Fresh Tomato'
         },
         {
-          image: '/src/assets/img/spinach.jpg',
+          image: '/src/assets/img/spinach-1.png',
           name: 'Organic Spinach'
         },
         {
-          image: '/src/assets/img/carrots.jpg',
+          image: '/src/assets/img/carrots-1.png',
           name: 'Natural Carrots'
         },
         {
-          image: '/src/assets/img/cabbage.jpg',
+          image: '/src/assets/img/grapes-1.png',
           name: 'Organic Grapes'
         },
         {
-          image: '/src/assets/img/tomatos.jpg',
+          image: '/src/assets/img/apple-1.png',
           name: 'Fresh Apple'
         },
         {
-          image: '/src/assets/img/spinach.jpg',
+          image: '/src/assets/img/broccoli-1.png',
           name: 'Natural Farming'
         },
         {
-          image: '/src/assets/img/carrots.jpg',
+          image: '/src/assets/img/eggplant-1.png',
           name: 'Organic Eggplant'
+        },
+      ],
+      qualities: [
+        {
+          image: '/src/assets/img/qualities.png',
+          title: 'Natural Farming',
+          info: 'we have a need to make these the of connections literal.'
+        },
+        {
+          image: '/src/assets/img/qualities-2.png',
+          title: 'Quality Product',
+          info: 'we have a need to make these the of connections literal.'
+        },
+        {
+          image: '/src/assets/img/qualities-3.png',
+          title: 'Free Delivery',
+          info: 'we have a need to make these the of connections literal.'
+        },
+        {
+          image: '/src/assets/img/qualities-4.png',
+          title: 'Always Fresh',
+          info: 'we have a need to make these the of connections literal.'
         },
       ]
     };
@@ -147,8 +169,72 @@ export default {
           <div class="fruit-img-container">
             <img :src="fruit.image" :alt="fruit.name">
           </div>
-          <div>
+          <h6 class="fruit-info">
             {{ fruit.name }}
+          </h6>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="fourth-paragraph">
+    <div class="row d-flex align-items-center">
+      <div class="container-aside-img col-6">
+        <img src="../assets/img/25y.jpg" alt="">
+      </div>
+      <div class="col-6 info-container">
+        <h6 class="orange">
+          Running week top selling
+        </h6>
+        <h2>
+          <span>Health is wealth – eat </span>
+          <span class="orange">natural, </span>
+          <span>eat </span>
+          <span class="orange">organic, </span>
+          <span>be healthy.</span>
+        </h2>
+        <p class="mb-5">
+          Organic is loaded with a sense of rightness, with a set of rules. I would much rather someone bought food that was local and sustainable but not organic than bought organic food that had to be shipped across the world.
+        </p>
+        <div class="d-flex">
+          <div class="me-4">
+            <h5>
+              All are handmade
+            </h5>
+            <p>
+              If I'm honest, the thing I am proudest of is my varieties of wild flowers in the hay meadow.
+            </p>
+          </div>
+          <div>
+            <h5>
+              100% Fresh ogranic
+            </h5>
+            <p>
+              If I'm honest, the thing I am proudest of is my varieties of wild flowers in the hay meadow.
+            </p>
+          </div>
+        </div>
+        <div>
+          <button>
+            ABOUT US
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fifth-paragraph">
+    <div class="fifth-pragraph gap-5">
+      <div class="qualities d-flex align-items-center gap-3" v-for="(quality, index) in qualities" :key="index">
+        <div class="w-75">
+          <img :src="quality.image" :alt="quality.title">
+        </div>
+        <div>
+          <h5 class="quality-title">
+            {{ quality.title }}
+          </h5>
+          <div>
+            {{ quality.info }}
           </div>
         </div>
       </div>
@@ -177,7 +263,7 @@ export default {
   }
 }
 .first-paragraph {
-  width: 1000px;
+  width: 1100px;
   padding: 50px 0px;
   margin: 0 auto;
   .container-aside-img {
@@ -204,7 +290,7 @@ export default {
 }
 
 .third-paragraph {
-  width: 1000px;
+  width: 1100px;
   padding: 50px 0px;
   margin: 0 auto; 
 
@@ -228,16 +314,68 @@ export default {
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
-    width: calc(100% / 2);
 
     .single-fruit-container {
-      width: 100px;
-      height: 150px;
+      width: calc(100% / 4);
+      height: calc(100% / 2);
 
       .fruit-img-container {
+        margin: 0 auto;
         width: 80px;
+        height: 80px;
+      }
+      .fruit-info {
+        text-align: center;
+        margin-top: 10px;
+      }
+      .fruit-info:hover {
+        color: #EF9E05;
+        transition: 1s;
       }
     }
   }
+}
+
+.fourth-paragraph {
+  width: 1100px;
+  padding: 50px 0px;
+  margin: 0 auto;
+  .orange {
+    color: #EF9E05;
+  }
+  button {
+    background-color: #EF9E05;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 0px 20px 0px 20px;
+  }
+
+  button:hover {
+    background-color: #017166;
+    transition: 1s;
+  }
+}
+.container-fifth-paragraph {
+  width: 90%;
+  height: 250px;
+  background-color: #FBF4E6;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+  .fifth-pragraph {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 1100px;
+    margin: 0 auto;
+    .quality-title:hover {
+      color: #EF9E05;
+      transition: 1s;
+    }
+  }
+
+
 }
 </style>
