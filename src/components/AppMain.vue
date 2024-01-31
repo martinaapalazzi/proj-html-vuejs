@@ -31,6 +31,22 @@ export default {
         "Orange",
         "Vegetable",
       ],
+      descriptions: [
+        {
+          description:
+            "'Dessert pudding dessert jelly beans cupcake sweet caramels gingerbread. Fruitcake biscuit cheesecake. Cookie topping sweets muffine pudding tart bear claw sugar plum croissant.'. We started as a small legal consultancy. We have proved our competence and had many satisfied clients.'",
+          author: "Martha Alex",
+          role: "Manager",
+          visible: true,
+        },
+        {
+          description:
+            "'Dessert pudding dessert jelly beans cupcake sweet caramels gingerbread. Fruitcake biscuit cheesecake. Cookie topping sweets muffine pudding tart bear claw sugar plum croissant.'. We started as a small legal consultancy. We have proved our competence and had many satisfied clients.'",
+          author: "Parvin Khan",
+          role: "Co- Of Officer",
+          visible: false,
+        },
+      ],
     };
   },
   components: {
@@ -107,6 +123,7 @@ export default {
         </div>
       </div>
     </section>
+    <!-- NELLA PRIMA SEZIONE MANCA LA SCORREVOLEZZA DEL CAROSELLO -->
     <section id="second-section" class="mb-5">
       <div class="my-container">
         <div class="row mb-3">
@@ -165,6 +182,7 @@ export default {
           </div>
         </div>
       </div>
+      <!-- NELLA SECONDA SEZIONE MANCA L'ICONA CHE SI MUOVA A DESTRA E SINISTRA E L'OVERLAY CHE SI ESPANDE GRADUALMENTE -->
     </section>
     <section id="third-section">
       <div class="container mb-5">
@@ -194,7 +212,32 @@ export default {
           />
         </div>
         <div class="d-flex justify-content-center">
-          <button class="border-0 me-2 text-white">ALL PRODUCTS</button>
+          <button class="border-0 me-2 text-white mb-5">ALL PRODUCTS</button>
+        </div>
+      </div>
+    </section>
+    <!-- NELLA TERZA SEZIONE MANCA L'OPZIONE CHE TI SELEZIONA I CIBI IN BASE AL TIPO CLICCATO NELLA NAV -->
+    <section id="fourth-section">
+      <div class="container mb-5 position-relative">
+        <div v-for="(elem, i) in descriptions" class="slider-container">
+          <div v-if="elem.visible" class="info-container text-center">
+            <p class="quotation-marks">
+              <i class="fa-solid fa-quote-left"></i>
+            </p>
+            <p class="description">{{ elem.description }}</p>
+            <h2>{{ elem.author }}</h2>
+            <h4 class="my-orange">{{ elem.role }}</h4>
+          </div>
+        </div>
+        <div
+          class="chevron-left-container d-flex justify-content-center align-items-center"
+        >
+          <i class="fa-solid fa-chevron-left fa-2xl text-white"></i>
+        </div>
+        <div
+          class="chevron-right-container d-flex justify-content-center align-items-center"
+        >
+          <i class="fa-solid fa-chevron-right fa-2xl text-white"></i>
         </div>
       </div>
     </section>
@@ -358,7 +401,6 @@ export default {
 #third-section {
   font-family: "Barlow Condensed", sans-serif;
   .container {
-    min-height: 1700px;
     background-image: url("../assets/img/shop-bg-img.jpg");
     background-size: cover;
     h1 {
@@ -390,6 +432,43 @@ export default {
   button:hover {
     background-color: $mainGreen;
     transition: 1s;
+  }
+}
+#fourth-section {
+  .container {
+    .slider-container {
+      width: 70%;
+      margin: 0 auto;
+      .info-container {
+        .quotation-marks {
+          font-size: 6em;
+          color: $mainGreen;
+        }
+        .description {
+          font-size: 1.5em;
+        }
+      }
+    }
+    .chevron-left-container {
+      width: 60px;
+      height: 60px;
+      background-color: $mainOrange;
+      position: absolute;
+      top: 50%;
+      left: 25px;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+    .chevron-right-container {
+      width: 60px;
+      height: 60px;
+      background-color: $mainGreen;
+      position: absolute;
+      top: 50%;
+      right: 25px;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
   }
 }
 </style>
