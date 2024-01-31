@@ -1,6 +1,7 @@
 <script>
 import axios from "axios";
 import { store } from "../store.js";
+import SingleProductApp from "./SingleProductApp.vue";
 
 export default {
   data() {
@@ -23,9 +24,35 @@ export default {
         { imgPath: "/src/assets/img/fe2.jpg", text: "Organic orange" },
         { imgPath: "/src/assets/img/fe3.jpg", text: "Fresh Juice" },
       ],
+      thirdSectionMainItemsList: [
+        "All Product",
+        "Apple",
+        "Food",
+        "Orange",
+        "Vegetable",
+      ],
+      descriptions: [
+        {
+          description:
+            "'Dessert pudding dessert jelly beans cupcake sweet caramels gingerbread. Fruitcake biscuit cheesecake. Cookie topping sweets muffine pudding tart bear claw sugar plum croissant.'. We started as a small legal consultancy. We have proved our competence and had many satisfied clients.'",
+          author: "Martha Alex",
+          role: "Manager",
+          visible: true,
+        },
+        {
+          description:
+            "'Dessert pudding dessert jelly beans cupcake sweet caramels gingerbread. Fruitcake biscuit cheesecake. Cookie topping sweets muffine pudding tart bear claw sugar plum croissant.'. We started as a small legal consultancy. We have proved our competence and had many satisfied clients.'",
+          author: "Parvin Khan",
+          role: "Co- Of Officer",
+          visible: false,
+        },
+      ],
+      activeDescription: 0,
     };
   },
-  components: {},
+  components: {
+    SingleProductApp,
+  },
   methods: {
     nextPhoto() {
       if (this.activeSlideIndex < this.sliderImg.length - 1) {
@@ -64,6 +91,20 @@ export default {
         firstItem,
       ];
     },
+    nextDescription() {
+      if (this.activeDescription == 0) {
+        this.activeDescription = 1;
+      } else {
+        this.activeDescription = 0;
+      }
+    },
+    previousDescription() {
+      if (this.activeDescription == 1) {
+        this.activeDescription = 0;
+      } else {
+        this.activeDescription = 1;
+      }
+    },
   },
 };
 </script>
@@ -97,6 +138,7 @@ export default {
         </div>
       </div>
     </section>
+    <!-- NELLA PRIMA SEZIONE MANCA LA SCORREVOLEZZA DEL CAROSELLO -->
     <section id="second-section" class="mb-5">
       <div class="my-container">
         <div class="row mb-3">
@@ -155,9 +197,66 @@ export default {
           </div>
         </div>
       </div>
+      <!-- NELLA SECONDA SEZIONE MANCA L'ICONA CHE SI MUOVA A DESTRA E SINISTRA E L'OVERLAY CHE SI ESPANDE GRADUALMENTE -->
     </section>
     <section id="third-section">
-      <div class="container"></div>
+      <div class="container mb-5">
+        <h4 class="text-center my-orange pt-5">Trending online store</h4>
+        <h1 class="text-center text-white pt-3">
+          GOGRIN ALL <span class="my-orange">ORGANIC</span> FOOD
+        </h1>
+        <div class="d-flex justify-content-center mt-5 mb-5">
+          <ul class="d-flex p-0">
+            <li
+              v-for="(elem, i) in thirdSectionMainItemsList"
+              class="ms-3 me-3"
+            >
+              {{ elem }}
+            </li>
+          </ul>
+        </div>
+        <div class="row ps-5 pe-5">
+          <SingleProductApp
+            class="my-margin-bottom"
+            v-for="(elem, i) in store.food"
+            :path="elem.imgPath"
+            :name="elem.name"
+            :price="elem.price"
+            :oldPrice="elem.oldPrice"
+            :sale="elem.sale"
+          />
+        </div>
+        <div class="d-flex justify-content-center">
+          <button class="border-0 me-2 text-white mb-5">ALL PRODUCTS</button>
+        </div>
+      </div>
+    </section>
+    <!-- NELLA TERZA SEZIONE MANCA L'OPZIONE CHE TI SELEZIONA I CIBI IN BASE AL TIPO CLICCATO NELLA NAV -->
+    <section id="fourth-section">
+      <div class="container mb-5 position-relative">
+        <div class="slider-container-container">
+          <div
+            v-for="(elem, i) in descriptions"
+            class="slider-container"
+            :class="{ 'd-block': i == activeDescription }"
+          >
+            <div class="info-container text-center">
+              <p class="quotation-marks">
+                <i class="fa-solid fa-quote-left"></i>
+              </p>
+              <p class="description">{{ elem.description }}</p>
+              <h2>{{ elem.author }}</h2>
+              <h4 class="my-orange">{{ elem.role }}</h4>
+            </div>
+          </div>
+          <div @click="previousDescription" class="chevron-left-container">
+            <i class="fa-solid fa-chevron-left fa-2xl text-white"></i>
+          </div>
+          <div @click="nextDescription" class="chevron-right-container">
+            <i class="fa-solid fa-chevron-right fa-2xl text-white"></i>
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -170,6 +269,9 @@ export default {
 }
 .my-green {
   color: $mainGreen;
+}
+.item-active {
+  display: block;
 }
 
 #first-section {
@@ -249,6 +351,7 @@ export default {
   }
 }
 #second-section {
+  font-family: "Barlow Condensed", sans-serif;
   .my-container {
     width: 70vw;
     margin: 0 auto;
@@ -313,6 +416,102 @@ export default {
   }
   .img-container:hover .overlay {
     display: block;
+  }
+}
+#third-section {
+  font-family: "Barlow Condensed", sans-serif;
+  .container {
+    background-image: url("../assets/img/shop-bg-img.jpg");
+    background-size: cover;
+    h1 {
+      font-weight: bold;
+    }
+    ul {
+      list-style-type: none;
+      li {
+        color: white;
+        cursor: pointer;
+      }
+      li:hover {
+        color: $mainOrange;
+        transition: 1s;
+      }
+    }
+    .row {
+      .my-margin-bottom {
+        margin-bottom: calc((var(--bs-gutter-x) * 0.5) * 2);
+      }
+    }
+  }
+  button {
+    background-color: $mainOrange;
+    padding: 16px 50px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+  button:hover {
+    background-color: $mainGreen;
+    transition: 1s;
+  }
+}
+#fourth-section {
+  .slider-container {
+    display: none;
+  }
+  .container {
+    .slider-container {
+      width: 70%;
+      margin: 0 auto;
+      .info-container {
+        .quotation-marks {
+          font-size: 6em;
+          color: $mainGreen;
+        }
+        .description {
+          font-size: 1.5em;
+        }
+      }
+    }
+    .chevron-left-container {
+      width: 60px;
+      height: 60px;
+      background-color: $mainOrange;
+      position: absolute;
+      top: 50%;
+      left: 25px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      display: none;
+    }
+    .chevron-right-container {
+      width: 60px;
+      height: 60px;
+      background-color: $mainOrange;
+      position: absolute;
+      top: 50%;
+      right: 25px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      display: none;
+    }
+    .chevron-left-container:hover {
+      background-color: $mainGreen;
+      transition: 1s;
+    }
+    .chevron-right-container:hover {
+      background-color: $mainGreen;
+      transition: 1s;
+    }
+    .slider-container-container:hover .chevron-left-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .slider-container-container:hover .chevron-right-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
 </style>
