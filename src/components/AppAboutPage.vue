@@ -66,7 +66,7 @@ export default {
 };
 </script>
 
-<template>
+<template class="app-about-page">
 
   <div class="about-page">
     <div class="jumbotron">
@@ -246,6 +246,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+.app-about-page {
+  font-family: "Barlow Condensed", sans-serif;
+}
 .about-page {
   .jumbotron {
     color: white;

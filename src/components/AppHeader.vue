@@ -11,97 +11,86 @@ export default {
           linkName: "HOME",
           link: "#",
           dropdown: [
-        {
-          dropdownName: "Home-1",
-          dropdownLink: "home"
-        },
-        {
-          dropdownName: "Home-2",
-          dropdownLink: "home"
-        },
-        {
-          dropdownName: "Home-3",
-          dropdownLink: "home"
-        },
-        {
-          dropdownName: "Home-landing",
-          dropdownLink: "home"
-        },
-        {
-          dropdownName: "Home-video",
-          dropdownLink: "home"
-        },
-      ]
+            {
+              dropdownName: "Home-1",
+              dropdownLink: "home"
+            },
+            {
+              dropdownName: "Home-2",
+              dropdownLink: "home"
+            },
+            {
+              dropdownName: "Home-3",
+              dropdownLink: "home"
+            },
+            {
+              dropdownName: "Home-landing",
+              dropdownLink: "home"
+            },
+            {
+              dropdownName: "Home-video",
+              dropdownLink: "home"
+            }
+          ]
         },
         {
           linkName: "ABOUT",
-          link: "#"
+          link: "#",
+          dropdown: [
+            {
+              dropdownName: "About",
+              dropdownLink: "about"
+            },
+            {
+              dropdownName: "Team",
+              dropdownLink: "about"
+            },
+            {
+              dropdownName: "Pricing tables",
+              dropdownLink: "about"
+            },
+            {
+              dropdownName: "FAQ Page",
+              dropdownLink: "about"
+            },
+            {
+              dropdownName: "Testimonials",
+              dropdownLink: "about"
+            }
+          ]
         },
         {
           linkName: "SERVICE",
-          link: "service"
-        },
-        {
-          linkName: "PORTFOLIO",
-          link: "portfolio"
+          link: "#"
         },
         {
           linkName: "SHOP",
-          link: "shop"
-        },
-        {
-          linkName: "BLOG",
-          link: "blog"
+          link: "#",
+          dropdown: [
+            {
+              dropdownName: "Shop",
+              dropdownLink: "shop"
+            },
+            {
+              dropdownName: "My Account",
+              dropdownLink: "shop"
+            },
+            {
+              dropdownName: "Cart",
+              dropdownLink: "shop"
+            },
+            {
+              dropdownName: "Checkout",
+              dropdownLink: "shop"
+            }
+          ]
         },
         {
           linkName: "CONTACT",
-          link: "contact"
-        }
-      ],
-      dropdownHome: [
-        {
-          dropdownName: "Home-1",
-          dropdownLink: "home"
-        },
-        {
-          dropdownName: "Home-2",
-          dropdownLink: "home"
-        },
-        {
-          dropdownName: "Home-3",
-          dropdownLink: "home"
-        },
-        {
-          dropdownName: "Home-landing",
-          dropdownLink: "home"
-        },
-        {
-          dropdownName: "Home-video",
-          dropdownLink: "home"
+          link: "#"
         },
       ],
-      dropdownAbout: [
-      {
-          dropdownName: "About",
-          dropdownLink: "about"
-        },
-        {
-          dropdownName: "Team",
-          dropdownLink: "about"
-        },
-        {
-          dropdownName: "Pricing tables",
-          dropdownLink: "about"
-        },
-        {
-          dropdownName: "FAQ Pges",
-          dropdownLink: "about"
-        },
-        {
-          dropdownName: "Testimonials",
-          dropdownLink: "about"
-        },
-      ]
+        
 
     };
   },
@@ -159,34 +148,18 @@ export default {
         </div>
         <div class="navbar-header">
           <div class="d-flex align-items-center gap-3">
-            <div>
-              <ul class="dropdown d-flex mb-0 gap-2">
-                <li v-for="(nav, index) in navbar" class="dropbtn me-2">
-                  {{ nav.linkName }}
-                  <span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                  </span>
-                  <div class="dropdown">
-                    <ul>
-                      <li>sottomenu 1</li>
-                      <li></li>
-                      <li></li>
-                      <li></li>
-                    </ul>
-                  </div>
+            <div class="dropdown d-flex mb-0 gap-2">
+              <a v-for="(nav, index) in navbar"
+                class="btn dropdown-toggle"
+                href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ nav.linkName }} 
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#">
+                    {{ navbar[index].dropdown[index].dropdownName }}
+                  </a>
                 </li>
-                <!--<div class="dropdown-content">
-                  <ul>
-                    <li v-for="(drop, index) in dropdownHome">
-                      {{ drop.dropdownName }}
-                    </li>
-                  </ul>
-                  <ul>
-                    <li v-for="(drop, index) in dropdownAbout">
-                      {{ drop.dropdownName }}
-                    </li>
-                  </ul>
-                </div> -->
               </ul>
             </div>
           </div>
