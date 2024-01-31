@@ -365,6 +365,26 @@ export default {
           </div>
         </div>
       </div>
+      <!-- MANCA IL BORDO DESTRO A ZIG-ZAG -->
+    </section>
+    <section id="seventh-section">
+      <div class="container mb-5">
+        <h4 class="my-orange text-center">Running week top selling</h4>
+        <h1 class="text-center my-green">
+          TOP <span class="my-orange">TRENDING</span> ORGANIC FOOD
+        </h1>
+        <div class="row ps-5 pe-5">
+          <SingleProductApp
+            class="my-margin-bottom"
+            v-for="(elem, i) in store.food.slice(0, 4)"
+            :path="elem.imgPath"
+            :name="elem.name"
+            :price="elem.price"
+            :oldPrice="elem.oldPrice"
+            :sale="elem.sale"
+          />
+        </div>
+      </div>
     </section>
   </div>
 </template>
