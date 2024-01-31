@@ -6,107 +6,109 @@ export default {
   data() {
     return {
       store,
+      flag: 0,
       navbar: [
         {
           linkName: "HOME",
           link: "#",
           dropdown: [
-        {
-          dropdownName: "Home-1",
-          dropdownLink: "home"
-        },
-        {
-          dropdownName: "Home-2",
-          dropdownLink: "home"
-        },
-        {
-          dropdownName: "Home-3",
-          dropdownLink: "home"
-        },
-        {
-          dropdownName: "Home-landing",
-          dropdownLink: "home"
-        },
-        {
-          dropdownName: "Home-video",
-          dropdownLink: "home"
-        },
-      ]
+            {
+              dropdownName: "Home-1",
+              dropdownLink: "home"
+            },
+            {
+              dropdownName: "Home-2",
+              dropdownLink: "home"
+            },
+            {
+              dropdownName: "Home-3",
+              dropdownLink: "home"
+            },
+            {
+              dropdownName: "Home-landing",
+              dropdownLink: "home"
+            },
+            {
+              dropdownName: "Home-video",
+              dropdownLink: "home"
+            }
+          ]
         },
         {
           linkName: "ABOUT",
-          link: "#"
+          link: "#",
+          dropdown: [
+            {
+              dropdownName: "About",
+              dropdownLink: "about"
+            },
+            {
+              dropdownName: "Team",
+              dropdownLink: "about"
+            },
+            {
+              dropdownName: "Pricing tables",
+              dropdownLink: "about"
+            },
+            {
+              dropdownName: "FAQ Page",
+              dropdownLink: "about"
+            },
+            {
+              dropdownName: "Testimonials",
+              dropdownLink: "about"
+            }
+          ]
         },
         {
           linkName: "SERVICE",
-          link: "service"
-        },
-        {
-          linkName: "PORTFOLIO",
-          link: "portfolio"
+          link: "#"
         },
         {
           linkName: "SHOP",
-          link: "shop"
-        },
-        {
-          linkName: "BLOG",
-          link: "blog"
+          link: "#",
+          dropdown: [
+            {
+              dropdownName: "Shop",
+              dropdownLink: "shop"
+            },
+            {
+              dropdownName: "My Account",
+              dropdownLink: "shop"
+            },
+            {
+              dropdownName: "Cart",
+              dropdownLink: "shop"
+            },
+            {
+              dropdownName: "Checkout",
+              dropdownLink: "shop"
+            }
+          ]
         },
         {
           linkName: "CONTACT",
-          link: "contact"
-        }
-      ],
-      dropdownHome: [
-        {
-          dropdownName: "Home-1",
-          dropdownLink: "home"
-        },
-        {
-          dropdownName: "Home-2",
-          dropdownLink: "home"
-        },
-        {
-          dropdownName: "Home-3",
-          dropdownLink: "home"
-        },
-        {
-          dropdownName: "Home-landing",
-          dropdownLink: "home"
-        },
-        {
-          dropdownName: "Home-video",
-          dropdownLink: "home"
+          link: "#"
         },
       ],
-      dropdownAbout: [
-      {
-          dropdownName: "About",
-          dropdownLink: "about"
-        },
-        {
-          dropdownName: "Team",
-          dropdownLink: "about"
-        },
-        {
-          dropdownName: "Pricing tables",
-          dropdownLink: "about"
-        },
-        {
-          dropdownName: "FAQ Pges",
-          dropdownLink: "about"
-        },
-        {
-          dropdownName: "Testimonials",
-          dropdownLink: "about"
-        },
-      ]
+        
 
     };
   },
   components: {
     appAboutPage
+  },
+  methods: {
+    showSearch: function () {
+      if (this.flag == 0) {
+        this.flag = 1
+      }
+    },
+    returnHomePage: function () {
+      if (this.flag == 1) {
+        this.flag = 0
+      }
+    }
   }
 };
 </script>
@@ -159,34 +161,18 @@ export default {
         </div>
         <div class="navbar-header">
           <div class="d-flex align-items-center gap-3">
-            <div>
-              <ul class="dropdown d-flex mb-0 gap-2">
-                <li v-for="(nav, index) in navbar" class="dropbtn me-2">
-                  {{ nav.linkName }}
-                  <span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                  </span>
-                  <div class="dropdown">
-                    <ul>
-                      <li>sottomenu 1</li>
-                      <li></li>
-                      <li></li>
-                      <li></li>
-                    </ul>
-                  </div>
+            <div class="dropdown d-flex mb-0 gap-2">
+              <a v-for="(nav, index) in navbar" :key="index"
+                class="btn dropdown-toggle"
+                href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ nav.linkName }} 
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#">
+
+                  </a>
                 </li>
-                <!--<div class="dropdown-content">
-                  <ul>
-                    <li v-for="(drop, index) in dropdownHome">
-                      {{ drop.dropdownName }}
-                    </li>
-                  </ul>
-                  <ul>
-                    <li v-for="(drop, index) in dropdownAbout">
-                      {{ drop.dropdownName }}
-                    </li>
-                  </ul>
-                </div> -->
               </ul>
             </div>
           </div>
@@ -262,7 +248,18 @@ export default {
       </div>
       <div class="shopping-side">
         <div>
-          <i class="search fa-solid fa-magnifying-glass"></i>
+          <i @click="showSearch()" class="search fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="hidden-search" :class="{'d-block': flag == 1}">
+          <form action="">
+            <input type="text" placeholder="Type your keyboard">
+            <button class="search-submit-button" type="submit">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </form>
+          <div @click="returnHomePage()" class="exit-search">
+            <i class="fa-solid fa-x"></i>
+          </div>
         </div>
         <div class="position-relative">
           <i class="cart fa-solid fa-cart-shopping"></i>
@@ -368,6 +365,24 @@ export default {
         border-radius: 50px;
       }
 
+      .hidden-search {
+        display: none;
+        .search-submit-button {
+        color: black;
+        background-color: transparent;
+      }
+
+      .exit-search {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        font-size: small;
+        padding-top: 5px;
+        border-radius: 50px;
+        color: white;
+        background-color: #EF9E05;
+      }
+      }
       .cart {
         cursor: pointer;
         color: #017166;

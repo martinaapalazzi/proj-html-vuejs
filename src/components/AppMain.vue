@@ -7,6 +7,7 @@ export default {
   data() {
     return {
       store,
+      // DATI PRIMA SEZIONE
       sliderImg: [
         {
           imgPath: "/src/assets/img/slider.jpg",
@@ -16,6 +17,7 @@ export default {
         },
       ],
       activeSlideIndex: 0,
+      // DATI SECONDA SEZIONE
       secondSectionImg: [
         { imgPath: "/src/assets/img/fe1.jpg", text: "Fresh Juice" },
         { imgPath: "/src/assets/img/fe2.jpg", text: "Fresh Fruits" },
@@ -24,6 +26,7 @@ export default {
         { imgPath: "/src/assets/img/fe2.jpg", text: "Organic orange" },
         { imgPath: "/src/assets/img/fe3.jpg", text: "Fresh Juice" },
       ],
+      // DATI TERZA SEZIONE
       thirdSectionMainItemsList: [
         "All Product",
         "Apple",
@@ -31,6 +34,7 @@ export default {
         "Orange",
         "Vegetable",
       ],
+      // DATI QUARTA SEZIONE
       descriptions: [
         {
           description:
@@ -48,12 +52,45 @@ export default {
         },
       ],
       activeDescription: 0,
+      // DATI QUINTA SEZIONE
+      offers: [
+        {
+          text: "Fresh gurden tomato combo offer... $37",
+          imgPath: "src/assets/img/offer-img01.jpg",
+          link: "SHOP NOW",
+        },
+        {
+          text: "Some ogranic healty fruits combo offer... $49",
+          imgPath: "src/assets/img/offer-img02.jpg",
+          link: "SHOP NOW",
+        },
+      ],
+      // DATI SESTA SEZIONE
+      somethingToBeProudOf: [
+        {
+          firstNumber: 0,
+          text: "Years of Experience",
+        },
+        {
+          firstNumber: 0,
+          text: "Everyday Online Delivery",
+        },
+        {
+          firstNumber: 0,
+          text: "Client Satyisfaction",
+        },
+        {
+          firstNumber: 0,
+          text: "Award Winning",
+        },
+      ],
     };
   },
   components: {
     SingleProductApp,
   },
   methods: {
+    // FUNZIONI PRIMA SEZIONE
     nextPhoto() {
       if (this.activeSlideIndex < this.sliderImg.length - 1) {
         this.activeSlideIndex++;
@@ -68,6 +105,7 @@ export default {
         this.activeSlideIndex = this.sliderImg.length - 1;
       }
     },
+    // FUNZIONI SECONDA SEZIONE
     nextPhotoTwo() {
       // input:  [3, 5, 1, 7, 9, 12]
       // output: [12, 3, 5, 1, 7, 9]
@@ -91,6 +129,7 @@ export default {
         firstItem,
       ];
     },
+    // FUNZIONI QUARTA SEZIONE
     nextDescription() {
       if (this.activeDescription == 0) {
         this.activeDescription = 1;
@@ -105,6 +144,31 @@ export default {
         this.activeDescription = 1;
       }
     },
+  },
+  mounted() {
+    setInterval(() => {
+      if (this.somethingToBeProudOf[0].firstNumber < 29) {
+        this.somethingToBeProudOf[0].firstNumber++;
+      }
+    }, 3000 / 29);
+
+    setInterval(() => {
+      if (this.somethingToBeProudOf[1].firstNumber < 200) {
+        this.somethingToBeProudOf[1].firstNumber++;
+      }
+    }, 3000 / 200);
+
+    setInterval(() => {
+      if (this.somethingToBeProudOf[2].firstNumber < 20) {
+        this.somethingToBeProudOf[2].firstNumber++;
+      }
+    }, 3000 / 20);
+
+    setInterval(() => {
+      if (this.somethingToBeProudOf[3].firstNumber < 30) {
+        this.somethingToBeProudOf[3].firstNumber++;
+      }
+    }, 3000 / 30);
   },
 };
 </script>
@@ -230,8 +294,8 @@ export default {
           <button class="border-0 me-2 text-white mb-5">ALL PRODUCTS</button>
         </div>
       </div>
+      <!-- NELLA TERZA SEZIONE MANCA L'OPZIONE CHE TI SELEZIONA I CIBI IN BASE AL TIPO CLICCATO NELLA NAV -->
     </section>
-    <!-- NELLA TERZA SEZIONE MANCA L'OPZIONE CHE TI SELEZIONA I CIBI IN BASE AL TIPO CLICCATO NELLA NAV -->
     <section id="fourth-section">
       <div class="container mb-5 position-relative">
         <div class="slider-container-container">
@@ -254,6 +318,50 @@ export default {
           </div>
           <div @click="nextDescription" class="chevron-right-container">
             <i class="fa-solid fa-chevron-right fa-2xl text-white"></i>
+          </div>
+        </div>
+      </div>
+      <!-- NELLA QUARTA SEZIONE VA MESSA L'OPZIONE PER FISSARE IL COLORE DEL BOTTONE AL CLICK... -->
+    </section>
+    <section id="fifth-section">
+      <div class="container mb-5">
+        <div class="shop-now-container">
+          <div class="row">
+            <div v-for="(elem, i) in offers" class="col-6">
+              <div class="position-relative">
+                <img :src="elem.imgPath" alt="" />
+                <div class="position-absolute w-75 text-white top-0">
+                  <h2 class="p-3">{{ elem.text }}</h2>
+                </div>
+                <div class="position-absolute text-white bottom-0">
+                  <h5 class="p-3 shop-now-link">{{ elem.link }}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="sixth-section">
+      <div class="container mb-5">
+        <div class="row h-100">
+          <div v-for="(elem, i) in somethingToBeProudOf" class="col-3 h-100">
+            <div
+              class="h-100 border-test d-flex justiy-content-center align-items-center"
+            >
+              <div class="w-100 text-center">
+                <div>
+                  <h1 class="my-orange">
+                    {{ elem.firstNumber }}
+                    <span v-if="elem.text != 'Client Satyisfaction'">+</span>
+                    <span v-if="elem.text == 'Client Satyisfaction'">K</span>
+                  </h1>
+                </div>
+                <div>
+                  <h4 class="text-white">{{ elem.text }}</h4>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -512,6 +620,29 @@ export default {
       justify-content: center;
       align-items: center;
     }
+  }
+}
+#fifth-section {
+  .shop-now-container {
+    width: 80%;
+    margin: 0 auto;
+    .shop-now-link {
+      cursor: pointer;
+    }
+    .shop-now-link:hover {
+      color: $mainOrange;
+      transition: 1s;
+    }
+  }
+}
+#sixth-section {
+  .container {
+    height: 300px;
+    background-image: url("../assets/img/shop-bg-img.jpg");
+    background-size: cover;
+  }
+  .my-orange {
+    font-size: 4em;
   }
 }
 </style>
