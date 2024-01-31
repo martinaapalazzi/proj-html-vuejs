@@ -114,6 +114,15 @@ export default {
           readMore: "READ MORE....",
         },
       ],
+      // DATI DECIMA SEZIONE
+      tenthSectionImg: [
+        { imgPath: "/src/assets/img/brand1.png" },
+        { imgPath: "/src/assets/img/brand2.png" },
+        { imgPath: "/src/assets/img/brand3.png" },
+        { imgPath: "/src/assets/img/brand4.png" },
+        { imgPath: "/src/assets/img/brand1.png" },
+        { imgPath: "/src/assets/img/brand2.png" },
+      ],
     };
   },
   components: {
@@ -467,7 +476,7 @@ export default {
       </div>
     </section>
     <section id="ninth-section">
-      <div class="container mb-5">
+      <div class="container special-margin">
         <h4 class="my-orange text-center">The news whatwe have</h4>
         <h1 class="text-center my-green mb-5">
           GOGREEN LATEST <span class="my-orange">NEWS</span> FEED
@@ -490,6 +499,29 @@ export default {
             >
             <p class="mb-3">{{ elem.text }}</p>
             <a href="">{{ elem.readMore }}</a>
+          </div>
+        </div>
+      </div>
+      <!-- MANCA L'OVERLAY! -->
+    </section>
+    <section id="tenth-section">
+      <div class="container mb-3">
+        <div class="big-carousel-container position-relative">
+          <div class="row">
+            <div
+              v-for="(elem, i) in tenthSectionImg"
+              :class="{ col: i >= 0 && i < 5 }"
+            >
+              <div v-if="i >= 0 && i < 5" class="p-4">
+                <img :src="elem.imgPath" alt="" />
+              </div>
+            </div>
+          </div>
+          <div class="previous-button">
+            <i class="fa-solid fa-chevron-left text-white fa-2xl"></i>
+          </div>
+          <div class="next-button">
+            <i class="fa-solid fa-chevron-right text-white fa-2xl"></i>
           </div>
         </div>
       </div>
@@ -882,6 +914,51 @@ export default {
   a:hover {
     color: $mainOrange;
     transition: 1s;
+  }
+  .special-margin {
+    margin-bottom: 100px;
+  }
+}
+#tenth-section {
+  .previous-button {
+    width: 50px;
+    height: 50px;
+    background-color: $mainOrange;
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: none;
+  }
+  .next-button {
+    width: 50px;
+    height: 50px;
+    background-color: $mainOrange;
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: none;
+  }
+  .previous-button:hover {
+    background-color: $mainGreen;
+    transition: 1s;
+  }
+  .next-button:hover {
+    background-color: $mainGreen;
+    transition: 1s;
+  }
+  .big-carousel-container:hover .previous-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .big-carousel-container:hover .next-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 </style>
