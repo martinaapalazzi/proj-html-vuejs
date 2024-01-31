@@ -10,28 +10,46 @@ export default {
   <!-- Footer Top -->
   <footer class="footer-container">
     <section id="footer-top">
+      <div class="container-top">
+        <div class="top-text">
+          <strong>SUNSCRIBE OUR NEWSLETTER</strong>
+        </div>
+        <div class="top-email">
+          <input id="email" name="email" type="text" placeholder="your email" required="">
+          <button>
+            SEND
+          </button>
+        </div>
+      </div>
     </section>
     <section id="footer-main">
-      <div class="container">
+      <div class="container-main">
         <div class="footer-nav-container">
           <div class="container-logo">
             <div class="img-footer-logo">
               <img src="../assets/img/footer-logo.png" alt="Logo">
             </div>
-            
             <p>
               War should never be entered upon until every agency of peace has failed not to be good
             </p>
             <nav>
-              <i class="fa-brands fa-facebook-f"></i>
-              <i class="fa-brands fa-google-plus-g"></i>
-              <i class="fa-brands fa-twitter"></i>
-              <i class="fa-brands fa-pinterest-p"></i>
+              <button>
+                <i class="fa-brands fa-facebook-f"></i>
+              </button>
+              <button>
+                <i class="fa-brands fa-google-plus-g"></i>
+              </button>
+              <button>
+                <i class="fa-brands fa-twitter"></i>
+              </button>
+              <button>
+                <i class="fa-brands fa-pinterest-p"></i>
+              </button>
             </nav>
           </div>
           <div class="container-link">
             <h5>
-              Emergency Link.
+              <strong>Emergency Link.</strong>
             </h5>
             <nav>
               <ul>
@@ -55,7 +73,7 @@ export default {
           </div>
           <div class="container-blog">
             <h5>
-              Our Latest Blog.
+              <strong>Our Latest Blog.</strong>
             </h5>
             <div class="img-text">
               <img src="../assets/img/blo1-70x70.jpg">
@@ -70,11 +88,11 @@ export default {
               </p>
             </div>
           </div>
-          <div>
+          <div class="container-gallery">
             <h5>
-              Our Gallery
+              <strong>Our Gallery</strong>
             </h5>
-            <div class="container-gallery">
+            <div class="container-column">
               <div class="column">
                 <div class="container-image">
                   <img src="../assets/img/blo1-70x70.jpg">
@@ -105,11 +123,15 @@ export default {
       </div>
     </section>
     <section id="footer-bottom">
-      <div class="row">
+      <div class="container-bottom">
         <div>
+        <div>
+          <p>
+            Copyright gogrin all rights reserved.
+          </p>
         </div>
       </div>
-      <div class="row">
+      <div>
         <nav>
           <ul>
             <li>
@@ -124,22 +146,59 @@ export default {
           </ul>
         </nav>
       </div>
+      </div>
     </section>
   </footer>
   
 </template>
 
 <style lang="scss" scoped>
-.footer.footer-container {
-  /*color: white;*/
+#footer-top {
+  height: 20%;
+
+  .container-top {
+    background-image: url("..//assets/img/milesim-bg.jpg");
+    width: 71vw;
+    padding: 3% 4% 3%;
+    margin: 20px 14vw;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .top-text {
+    padding-top: 20px;
+  }
+
+  #email {
+    height: 40px;
+    width: 350px;
+    padding-left: 20px;
+  }
+
+  button {
+    height: 40px;
+    color: white;
+    background-color: #017166;
+    border: none;
+    padding: 7px 40px;
+    margin: 10px 0;
+  }
+}
+.footer-container {
+  height: 520px;
+  color: white;
 }
 
-.footer-main {
-  background-image: url("/src/assets/img/footer-bg.jpg");
+#footer-main {
+  background-image: url("../assets/img/footer-bg.jpg");
   padding: 50px 0;
+  height: 100%;
 }
 
-.container {
+.container-main {
+  width: 70vw;
+  padding: 10% 0 0;
   margin: 0 auto;
 }
 
@@ -147,55 +206,110 @@ export default {
   display: flex;
 }
 .container-logo {
-  width: 350px;
+  width: 280px;
 
-  .img-footer-logo {
-    width: 100px;
+  nav {
+    display: flex;
+    justify-content: flex-start;
   }
 
-  .nav {
+  button {
+    color: white;
+    background-color: #017166;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 12px;
+    margin-right: 10px;
+  }
+}
+
+.img-footer-logo {
+  margin: 0 0 10px;
+  width: 200px;
+
+  nav {
     justify-content: space-around;
   }
 }
 
 .container-link {
-  width: 300px;
-  .ul {
+  width: 200px;
+  margin-left: 0;
+
+  h5 {
+    padding-left: 10px;
+  }
+  
+  nav ul {
     list-style-type: none;
-    text-decoration: none;
+    padding-left: 10px;
+    margin-top: 25px;
+    line-height: 2.5;
   }
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .container-blog {
-  width: 300px;
+  width: 390px;
+
+  h5 {
+    margin-bottom: 25px;
+  }
 }
 
 .img-text {
   display: flex;
-  margin: 1px;
+  height: 90px;
 
-  .img {
-    margin: 10px;
+  img {
+    margin: 5px 0;
+    width: auto;
   }
+  
+  p {
+    margin-left: 10px;
+  }
+}
+
+.container-gallery {
+  margin-right: 0;
+}
+
+.container-column {
+  width: 200px;
+  display: flex;
+  margin-top: 25px;
 }
 
 .column {
   flex: 1;
 }
 
-.container-gallery {
-  width: 100%;
-  display: flex;
-}
-
 .container-image {
-  padding: 10px;
+  padding: 5px;
 }
 
-.footer-bottom {
+#footer-bottom {
+  background-color: #017166;
+  height: 15%;
 
-  .ul li {
+  .container-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70vw;
+    height: 100%;
+    padding-top: 10px;
+    margin: 0 auto;
+  }
+
+  ul li {
     display: inline-block;
+    justify-content: space-between;
   }
 }
 
