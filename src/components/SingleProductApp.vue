@@ -8,13 +8,28 @@ export default {
     name: String,
     price: String,
     oldPrice: String,
+    sale: Boolean,
   },
 };
 </script>
 
 <template>
   <div class="col-3 item-container">
-    <img :src="path" alt="" />
+    <div class="position-relative">
+      <img :src="path" alt="" />
+      <div class="icons-container">
+        <div class="little-square">
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <div class="little-square">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+        <div class="little-square">
+          <i class="fa-solid fa-eye"></i>
+        </div>
+      </div>
+      <div v-if="sale" class="sale-container">SALE!</div>
+    </div>
     <h3 class="text-white text-center mt-3 mb-3">{{ name }}</h3>
     <p class="my-orange text-center mb-5">
       <span v-if="oldPrice != ''" class="crossed-line pe-2">{{
@@ -22,30 +37,25 @@ export default {
       }}</span>
       <span>{{ price }}</span>
     </p>
-    <div class="icons-container">
-      <div class="little-square">
-        <i class="fa-solid fa-heart"></i>
-      </div>
-      <div class="little-square">
-        <i class="fa-solid fa-cart-shopping"></i>
-      </div>
-      <div class="little-square">
-        <i class="fa-solid fa-eye"></i>
-      </div>
-    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 @use "../assets/scss/partials/variables.scss" as *;
 .item-container {
+  h3 {
+    font-weight: bold;
+  }
+  .crossed-line {
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
   img:hover {
     cursor: pointer;
   }
-  position: relative;
   .icons-container {
     position: absolute;
-    top: 55%;
+    bottom: 5px;
     left: 50%;
     transform: translateX(-50%);
     cursor: pointer;
@@ -70,14 +80,17 @@ export default {
 .item-container:hover .icons-container {
   display: flex;
 }
-h3 {
-  font-weight: bold;
-}
 .my-orange {
   color: $mainOrange;
 }
-.crossed-line {
-  text-decoration: line-through;
-  opacity: 0.5;
+.sale-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 6px;
+  background-color: $mainOrange;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
 }
 </style>

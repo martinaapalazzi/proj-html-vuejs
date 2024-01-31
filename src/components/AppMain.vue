@@ -190,6 +190,7 @@ export default {
             :name="elem.name"
             :price="elem.price"
             :oldPrice="elem.oldPrice"
+            :sale="elem.sale"
           />
         </div>
         <div class="d-flex justify-content-center">
