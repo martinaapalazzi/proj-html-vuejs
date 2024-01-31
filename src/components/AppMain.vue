@@ -183,6 +183,23 @@ export default {
         this.activeDescription = 1;
       }
     },
+    // FUNZIONI DECIMA SEZIONE
+    nextPhotoThree() {
+      const lastItem = this.tenthSectionImg[this.tenthSectionImg.length - 1];
+      this.tenthSectionImg = [
+        lastItem,
+        ...this.tenthSectionImg.slice(0, this.tenthSectionImg.length - 1),
+      ];
+      console.log(this.tenthSectionImg);
+    },
+    previousPhotoThree() {
+      const firstItem = this.tenthSectionImg[0];
+      this.tenthSectionImg = [
+        ...this.tenthSectionImg.slice(1, this.tenthSectionImg.length),
+        firstItem,
+      ];
+      console.log(this.tenthSectionImg);
+    },
   },
   mounted() {
     setInterval(() => {
@@ -505,7 +522,7 @@ export default {
       <!-- MANCA L'OVERLAY! -->
     </section>
     <section id="tenth-section">
-      <div class="container mb-3">
+      <div class="container mb-5">
         <div class="big-carousel-container position-relative">
           <div class="row">
             <div
@@ -517,10 +534,10 @@ export default {
               </div>
             </div>
           </div>
-          <div class="previous-button">
+          <div @click="previousPhotoThree" class="previous-button">
             <i class="fa-solid fa-chevron-left text-white fa-2xl"></i>
           </div>
-          <div class="next-button">
+          <div @click="nextPhotoThree" class="next-button">
             <i class="fa-solid fa-chevron-right text-white fa-2xl"></i>
           </div>
         </div>
