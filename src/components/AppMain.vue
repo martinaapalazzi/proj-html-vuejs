@@ -47,6 +47,7 @@ export default {
           visible: false,
         },
       ],
+      activeDescription: 0,
     };
   },
   components: {
@@ -89,6 +90,20 @@ export default {
         ...this.secondSectionImg.slice(1, this.secondSectionImg.length),
         firstItem,
       ];
+    },
+    nextDescription() {
+      if (this.activeDescription == 0) {
+        this.activeDescription = 1;
+      } else {
+        this.activeDescription = 0;
+      }
+    },
+    previousDescription() {
+      if (this.activeDescription == 1) {
+        this.activeDescription = 0;
+      } else {
+        this.activeDescription = 1;
+      }
     },
   },
 };
@@ -219,25 +234,27 @@ export default {
     <!-- NELLA TERZA SEZIONE MANCA L'OPZIONE CHE TI SELEZIONA I CIBI IN BASE AL TIPO CLICCATO NELLA NAV -->
     <section id="fourth-section">
       <div class="container mb-5 position-relative">
-        <div v-for="(elem, i) in descriptions" class="slider-container">
-          <div v-if="elem.visible" class="info-container text-center">
-            <p class="quotation-marks">
-              <i class="fa-solid fa-quote-left"></i>
-            </p>
-            <p class="description">{{ elem.description }}</p>
-            <h2>{{ elem.author }}</h2>
-            <h4 class="my-orange">{{ elem.role }}</h4>
+        <div class="slider-container-container">
+          <div
+            v-for="(elem, i) in descriptions"
+            class="slider-container"
+            :class="{ 'd-block': i == activeDescription }"
+          >
+            <div class="info-container text-center">
+              <p class="quotation-marks">
+                <i class="fa-solid fa-quote-left"></i>
+              </p>
+              <p class="description">{{ elem.description }}</p>
+              <h2>{{ elem.author }}</h2>
+              <h4 class="my-orange">{{ elem.role }}</h4>
+            </div>
           </div>
-        </div>
-        <div
-          class="chevron-left-container d-flex justify-content-center align-items-center"
-        >
-          <i class="fa-solid fa-chevron-left fa-2xl text-white"></i>
-        </div>
-        <div
-          class="chevron-right-container d-flex justify-content-center align-items-center"
-        >
-          <i class="fa-solid fa-chevron-right fa-2xl text-white"></i>
+          <div @click="previousDescription" class="chevron-left-container">
+            <i class="fa-solid fa-chevron-left fa-2xl text-white"></i>
+          </div>
+          <div @click="nextDescription" class="chevron-right-container">
+            <i class="fa-solid fa-chevron-right fa-2xl text-white"></i>
+          </div>
         </div>
       </div>
     </section>
@@ -252,6 +269,9 @@ export default {
 }
 .my-green {
   color: $mainGreen;
+}
+.item-active {
+  display: block;
 }
 
 #first-section {
@@ -435,6 +455,9 @@ export default {
   }
 }
 #fourth-section {
+  .slider-container {
+    display: none;
+  }
   .container {
     .slider-container {
       width: 70%;
@@ -458,16 +481,36 @@ export default {
       left: 25px;
       transform: translateY(-50%);
       cursor: pointer;
+      display: none;
     }
     .chevron-right-container {
       width: 60px;
       height: 60px;
-      background-color: $mainGreen;
+      background-color: $mainOrange;
       position: absolute;
       top: 50%;
       right: 25px;
       transform: translateY(-50%);
       cursor: pointer;
+      display: none;
+    }
+    .chevron-left-container:hover {
+      background-color: $mainGreen;
+      transition: 1s;
+    }
+    .chevron-right-container:hover {
+      background-color: $mainGreen;
+      transition: 1s;
+    }
+    .slider-container-container:hover .chevron-left-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .slider-container-container:hover .chevron-right-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
