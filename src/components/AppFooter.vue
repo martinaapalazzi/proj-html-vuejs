@@ -124,29 +124,28 @@ export default {
     </section>
     <section id="footer-bottom">
       <div class="container-bottom">
-        <div>
-        <div>
+        <div class="bottom-left">
           <p>
-            Copyright gogrin all rights reserved.
+            Copyright © gogrin all rights reserved.
           </p>
         </div>
+        <div class="bottom-right">
+          <nav>
+            <ul>
+              <li>
+                <a href="#">Service</a>
+              </li>
+              <li>
+                <a href="#">Pricing Table</a>
+              </li>
+              <li>
+                <a href="#">Contact</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <a href="#">Service</a>
-            </li>
-            <li>
-              <a href="#">Pricing Table</a>
-            </li>
-            <li>
-              <a href="#">Contact</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      </div>
+      
     </section>
   </footer>
   
@@ -206,7 +205,7 @@ export default {
   display: flex;
 }
 .container-logo {
-  width: 280px;
+  width: 30%;
 
   nav {
     display: flex;
@@ -233,7 +232,7 @@ export default {
 }
 
 .container-link {
-  width: 200px;
+  width: 20%;
   margin-left: 0;
 
   h5 {
@@ -254,7 +253,7 @@ a {
 }
 
 .container-blog {
-  width: 390px;
+  width: 40%;
 
   h5 {
     margin-bottom: 25px;
@@ -276,6 +275,7 @@ a {
 }
 
 .container-gallery {
+  width: 20%;
   margin-right: 0;
 }
 
@@ -307,9 +307,25 @@ a {
     margin: 0 auto;
   }
 
-  ul li {
-    display: inline-block;
+  .bottom-left {
+    padding-top: 9px;
+  }
+
+  .bottom-right {
+    padding-top: 9px;
     justify-content: space-between;
+  }
+
+  nav ul {
+    width: 300px;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+  }
+
+  ul li {
+    padding: 0;
   }
 }
 
