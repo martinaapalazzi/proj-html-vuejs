@@ -379,7 +379,5 @@ export default {
       transition: 1s;
     }
   }
-
-
 }
 </style>
