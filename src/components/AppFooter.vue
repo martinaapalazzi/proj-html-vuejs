@@ -24,6 +24,21 @@ export default {
           <button>SEND</button>
         </div>
       </div>
+      <div class="container-top">
+        <div class="top-text">
+          <strong>SUNSCRIBE OUR NEWSLETTER</strong>
+        </div>
+        <div class="top-email">
+          <input
+            id="email"
+            name="email"
+            type="text"
+            placeholder="your email"
+            required=""
+          />
+          <button>SEND</button>
+        </div>
+      </div>
     </section>
     <!-- Footer Main -->
     <section id="footer-main">
@@ -256,6 +271,22 @@ a {
   p {
     margin-left: 10px;
   }
+
+  p {
+    margin-left: 10px;
+  }
+}
+
+.container-gallery {
+  width: 20%;
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+.container-column {
+  width: 200px;
+  display: flex;
+  margin-top: 25px;
 }
 .container-gallery {
   width: 20%;
