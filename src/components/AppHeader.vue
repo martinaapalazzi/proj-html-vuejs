@@ -6,6 +6,7 @@ export default {
   data() {
     return {
       store,
+      flag: 0,
       navbar: [
         {
           linkName: "HOME",
@@ -96,6 +97,18 @@ export default {
   },
   components: {
     appAboutPage
+  },
+  methods: {
+    showSearch: function () {
+      if (this.flag == 0) {
+        this.flag = 1
+      }
+    },
+    returnHomePage: function () {
+      if (this.flag == 1) {
+        this.flag = 0
+      }
+    }
   }
 };
 </script>
@@ -149,7 +162,7 @@ export default {
         <div class="navbar-header">
           <div class="d-flex align-items-center gap-3">
             <div class="dropdown d-flex mb-0 gap-2">
-              <a v-for="(nav, index) in navbar"
+              <a v-for="(nav, index) in navbar" :key="index"
                 class="btn dropdown-toggle"
                 href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {{ nav.linkName }} 
@@ -157,7 +170,7 @@ export default {
               <ul class="dropdown-menu">
                 <li>
                   <a class="dropdown-item" href="#">
-                    {{ navbar[index].dropdown[index].dropdownName }}
+
                   </a>
                 </li>
               </ul>
@@ -235,7 +248,18 @@ export default {
       </div>
       <div class="shopping-side">
         <div>
-          <i class="search fa-solid fa-magnifying-glass"></i>
+          <i @click="showSearch()" class="search fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="hidden-search" :class="{'d-block': flag == 1}">
+          <form action="">
+            <input type="text" placeholder="Type your keyboard">
+            <button class="search-submit-button" type="submit">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </form>
+          <div @click="returnHomePage()" class="exit-search">
+            <i class="fa-solid fa-x"></i>
+          </div>
         </div>
         <div class="position-relative">
           <i class="cart fa-solid fa-cart-shopping"></i>
@@ -341,6 +365,24 @@ export default {
         border-radius: 50px;
       }
 
+      .hidden-search {
+        display: none;
+        .search-submit-button {
+        color: black;
+        background-color: transparent;
+      }
+
+      .exit-search {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        font-size: small;
+        padding-top: 5px;
+        border-radius: 50px;
+        color: white;
+        background-color: #EF9E05;
+      }
+      }
       .cart {
         cursor: pointer;
         color: #017166;
