@@ -62,7 +62,8 @@ export default {
         },
         {
           linkName: "SERVICE",
-          link: "#"
+          link: "#",
+          dropdown: []
         },
         {
           linkName: "SHOP",
@@ -88,7 +89,8 @@ export default {
         },
         {
           linkName: "CONTACT",
-          link: "#"
+          link: "#",
+          dropdown: []
         },
       ],
         
@@ -162,18 +164,19 @@ export default {
         <div class="navbar-header">
           <div class="d-flex align-items-center gap-3">
             <div class="dropdown d-flex mb-0 gap-2">
-              <a v-for="(nav, index) in navbar" :key="index"
-                class="btn dropdown-toggle"
-                href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ nav.linkName }} 
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="#">
-
-                  </a>
-                </li>
-              </ul>
+              <div v-for="(nav, index) in navbar" :key="index">
+                <a class="btn dropdown-toggle"
+                    href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{ nav.linkName }} 
+                </a>
+                <ul class="dropdown-menu" v-if="nav.dropdown.length > 0">
+                  <li v-for="(drop, index) in nav.dropdown" :key="index">
+                    <a class="dropdown-item" href="#">
+                      {{ drop.dropdownName }}
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
           <!-- <nav class="d-flex">
