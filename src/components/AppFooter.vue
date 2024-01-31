@@ -22,6 +22,7 @@ export default {
         </div>
       </div>
     </section>
+    <!-- Footer Main -->
     <section id="footer-main">
       <div class="container-main">
         <div class="footer-nav-container">
@@ -122,6 +123,7 @@ export default {
         </div>
       </div>
     </section>
+    <!-- Footer Bottom -->
     <section id="footer-bottom">
       <div class="container-bottom">
         <div class="bottom-left">
@@ -163,6 +165,7 @@ export default {
     position: absolute;
     display: flex;
     justify-content: space-between;
+    background-size: cover;
   }
 
   .top-text {
@@ -171,8 +174,8 @@ export default {
 
   #email {
     height: 40px;
-    width: 350px;
-    padding-left: 20px;
+    width: 550px;
+    padding-left: 30px;
   }
 
   button {
@@ -277,6 +280,7 @@ a {
 .container-gallery {
   width: 20%;
   margin-right: 0;
+  margin-left: 10px;
 }
 
 .container-column {
@@ -290,7 +294,7 @@ a {
 }
 
 .container-image {
-  padding: 5px;
+  margin: 5px;
 }
 
 #footer-bottom {
