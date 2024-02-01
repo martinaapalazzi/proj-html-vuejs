@@ -160,7 +160,9 @@ export default {
           <div class="dropdown d-flex mb-0 gap-2">
             <div class="hover-drop" v-for="(nav, index) in navbar" :key="index">
               <a
-                class="btn dropdown-toggle"
+                v-if="index < 4"
+                class="btn"
+                :class="{ 'dropdown-toggle': nav.dropdown.length > 0 }"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -168,6 +170,12 @@ export default {
               >
                 {{ nav.linkName }}
               </a>
+              <RouterLink
+                class="btn"
+                v-if="index == 4"
+                :to="{ name: 'contact' }"
+                >{{ nav.linkName }}</RouterLink
+              >
               <ul class="dropdown-menu" v-if="nav.dropdown.length > 0">
                 <li v-for="(drop, j) in nav.dropdown" :key="j">
                   <RouterLink
@@ -189,21 +197,43 @@ export default {
       </div>
     </div>
     <div class="shopping-side">
-      <div class="" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
-        <i @click="showSearch()" class="search fa-solid fa-magnifying-glass"></i>
+      <div
+        class=""
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasTop"
+        aria-controls="offcanvasTop"
+      >
+        <i
+          @click="showSearch()"
+          class="search fa-solid fa-magnifying-glass"
+        ></i>
       </div>
-      <div class="hidden-search offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel" style="height: 100%">
-        <div class="offcanvas-body d-flex align-items-center justify-content-center">
-          <div :class="{'d-block': flag == 1}">
+      <div
+        class="hidden-search offcanvas offcanvas-top"
+        tabindex="-1"
+        id="offcanvasTop"
+        aria-labelledby="offcanvasTopLabel"
+        style="height: 100%"
+      >
+        <div
+          class="offcanvas-body d-flex align-items-center justify-content-center"
+        >
+          <div :class="{ 'd-block': flag == 1 }">
             <label class="fs-1 text" for="">Type your keyboard</label>
             <form action="">
-              <input class="search-user" type="text" placeholder="">
+              <input class="search-user" type="text" placeholder="" />
               <button class="search-submit-button" type="submit">
                 <i class="fa-solid fa-arrow-right"></i>
               </button>
             </form>
-            <hr>
-            <div type="button" class="btn-close search-close-button" data-bs-dismiss="offcanvas" aria-label="Close"></div>
+            <hr />
+            <div
+              type="button"
+              class="btn-close search-close-button"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></div>
           </div>
         </div>
       </div>
@@ -234,9 +264,6 @@ export default {
       </div>
     </div>
   </div>
-  
-  <appAboutPage/>
-
 </template>
 
 <style lang="scss" scoped>
@@ -359,7 +386,7 @@ export default {
       }
 
       .exit-search {
-         width: 30px;
+        width: 30px;
         height: 30px;
         text-align: center;
         font-size: small;
