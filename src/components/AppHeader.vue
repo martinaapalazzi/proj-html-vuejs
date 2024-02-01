@@ -169,10 +169,18 @@ export default {
                 {{ nav.linkName }}
               </a>
               <ul class="dropdown-menu" v-if="nav.dropdown.length > 0">
-                <li v-for="(drop, index) in nav.dropdown" :key="index">
-                  <a class="dropdown-item" href="#">
+                <li v-for="(drop, j) in nav.dropdown" :key="j">
+                  <RouterLink
+                    :to="
+                      index == 1 && j == 0
+                        ? { name: 'about' }
+                        : { name: 'home' }
+                    "
+                    class="dropdown-item"
+                    href="#"
+                  >
                     {{ drop.dropdownName }}
-                  </a>
+                  </RouterLink>
                 </li>
               </ul>
             </div>
