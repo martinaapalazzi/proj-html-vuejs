@@ -6,7 +6,6 @@ export default {
   },
   components: {
     JumbotronContact,
-    AppFooter
   },
   props: {},
 };
@@ -82,7 +81,6 @@ export default {
       </div>
     </div>
   </section>
-  <AppFooter/>
 </template>
 
 <style lang="scss" scoped>
