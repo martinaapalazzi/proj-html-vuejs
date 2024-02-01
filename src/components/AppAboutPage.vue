@@ -1,9 +1,11 @@
 <script>
-import SingleProductApp from './SingleProductApp.vue';
+import hpThirdSection from './hpThirdSection.vue';
+import { store } from '../store.js';
 
 export default {
   data() {
     return {
+      store,
       fruits: [
         {
           image: '/src/assets/img/cabbage-1.png',
@@ -63,7 +65,7 @@ export default {
     };
   },
   components: {
-    SingleProductApp
+    hpThirdSection
   },
   props: {
 
@@ -151,14 +153,7 @@ export default {
     </div>
   </div>
 
-  <!-- <SingleProductApp
-            v-for="(elem, i) in store.food"
-            :path="elem.imgPath"
-            :name="elem.name"
-            :price="elem.price"
-            :oldPrice="elem.oldPrice"
-            :sale="elem.sale"
-          /> -->
+  <hpThirdSection/> 
 
   <div class="third-paragraph">
     <div class="row d-flex justify-content-between">
