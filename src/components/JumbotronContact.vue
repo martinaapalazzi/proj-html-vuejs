@@ -1,39 +1,29 @@
 <script>
 export default {
   data() {
-    return {
-
-    };
+    return {};
   },
-  props: {
-    
-  },
+  props: {},
 };
 </script>
 
 <template>
-
   <div class="about-page">
     <div class="jumbotron">
-      <h2>
-        Contact
-      </h2>
+      <h2>Contact</h2>
       <div class="d-flex justify-content-center align-items-center gap-2">
-        <div>
-          You here!
-        </div>
-        <i class="fa-solid fa-chevron-right"></i>
-        <div class="home-jumbo">
-          Home
-        </div>
+        <div>You here!</div>
         <i class="fa-solid fa-chevron-right"></i>
         <div>
-          Contact
+          <RouterLink class="home-jumbo" :to="{ name: 'home' }"
+            >Home</RouterLink
+          >
         </div>
+        <i class="fa-solid fa-chevron-right"></i>
+        <div>Contact</div>
       </div>
     </div>
   </div>
-  
 </template>
 
 <style lang="scss" scoped>
@@ -50,8 +40,12 @@ export default {
     object-fit: cover;
     .home-jumbo:hover {
       cursor: pointer;
-      color: #EF9E05;
+      color: #ef9e05;
       transition: 1s;
+    }
+    .home-jumbo {
+      text-decoration: none;
+      color: white;
     }
   }
 }
