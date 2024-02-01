@@ -1,4 +1,4 @@
-import { RouterLink, createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 
 import HomePage from "./components/HomePage.vue";
 import AppAboutPage from "./components/AppAboutPage.vue";
