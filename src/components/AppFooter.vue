@@ -172,6 +172,7 @@ export default {
     </section>
   </footer>
 </template>
+
 <style lang="scss" scoped>
 #footer-top {
   height: 20%;
@@ -338,5 +339,4 @@ a {
     padding: 0;
   }
 }
-
 </style>

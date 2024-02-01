@@ -101,7 +101,7 @@ export default {
 
 .google-maps {
   position: relative;
-  padding-bottom: 75%; /* Definisco l'aspect ratio */
+  padding-bottom: 75%;
   height: 0;
   overflow: hidden;
 }
