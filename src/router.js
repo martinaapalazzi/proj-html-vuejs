@@ -2,7 +2,7 @@ import { RouterLink, createRouter, createWebHistory } from "vue-router";
 
 import HomePage from "./components/HomePage.vue";
 import AppAboutPage from "./components/AppAboutPage.vue";
-import AppContactPage from "./components/AppContactPage.vue";
+import AppContactPage from "./components/AppContactPage.vue"
 
 const router = createRouter({
   history: createWebHistory(),
@@ -21,7 +21,7 @@ const router = createRouter({
       path: "/contact-us",
       name: "contact",
       component: AppContactPage,
-    },
+    }
   ],
 });
 
