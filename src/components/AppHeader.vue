@@ -1,6 +1,7 @@
 <script>
 import { store } from "../store";
 import appAboutPage from "../components/AppAboutPage.vue";
+import { RouterView } from "vue-router";
 
 export default {
   data() {
@@ -97,6 +98,7 @@ export default {
   },
   components: {
     appAboutPage,
+    RouterView,
   },
   methods: {
     showSearch: function () {
@@ -208,7 +210,6 @@ export default {
       </div>
     </div>
   </div>
-
   <appAboutPage />
 </template>
 

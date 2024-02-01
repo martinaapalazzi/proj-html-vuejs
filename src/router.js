@@ -16,6 +16,11 @@ const router = createRouter({
       name: "contact",
       component: AppContactPage,
     },
+    // {
+    //   path: "/",
+    //   name: "home",
+    //   component: HomePage,
+    // },
   ],
 });
 
