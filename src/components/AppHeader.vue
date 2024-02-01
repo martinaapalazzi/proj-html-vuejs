@@ -184,7 +184,25 @@ export default {
       </div>
     </div>
     <div class="shopping-side">
-      <div>
+      <div class="" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+        <i @click="showSearch()" class="search fa-solid fa-magnifying-glass"></i>
+      </div>
+      <div class="hidden-search offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel" style="height: 100%">
+        <div class="offcanvas-body d-flex align-items-center justify-content-center">
+          <div :class="{'d-block': flag == 1}">
+            <label class="fs-1 text" for="">Type your keyboard</label>
+            <form action="">
+              <input class="search-user" type="text" placeholder="">
+              <button class="search-submit-button" type="submit">
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </form>
+            <hr>
+            <div type="button" class="btn-close search-close-button" data-bs-dismiss="offcanvas" aria-label="Close"></div>
+          </div>
+        </div>
+      </div>
+      <!--<div>
         <i @click="showSearch()" class="search fa-solid fa-magnifying-glass"></i>
       </div>
       <div class="hidden-search" :class="{'d-block': flag == 1}">
@@ -197,7 +215,7 @@ export default {
         <div @click="returnHomePage()" class="exit-search">
           <i class="fa-solid fa-x"></i>
         </div>
-      </div>
+      </div> -->
       <div class="position-relative">
         <i class="cart fa-solid fa-cart-shopping"></i>
         <div class="cart-list position-absolute top-0 start-100 translate-middle">
@@ -211,7 +229,7 @@ export default {
       </div>
     </div>
   </div>
-  
+
   <appAboutPage/>
 
 </template>
@@ -320,15 +338,25 @@ export default {
     }
 
     .hidden-search {
-      display: none;
+      //display: none;
+      color: white;
       background-color: rgba(0, 0, 0, 0.483);
       .search-submit-button {
         color: black;
         background-color: transparent;
+        color: white;
+        font-size: x-large;
+      }
+      .search-user {
+        width: 500px;
+        color: white;
+        font-size: 20px;
+        background-color: transparent;
       }
 
-      .exit-search {
-         width: 30px;
+      .search-close-button {
+        margin-left: 40%;
+        width: 30px;
         height: 30px;
         text-align: center;
         font-size: small;
