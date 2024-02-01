@@ -208,6 +208,7 @@ export default {
       </div>
     </div>
   </div>
+
   <appAboutPage />
 </template>
 
