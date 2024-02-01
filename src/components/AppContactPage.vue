@@ -1,7 +1,11 @@
 <script>
+import JumbotronContact from '../components/JumbotronContact.vue';
 export default {
   data() {
     return {};
+  },
+  components: {
+    JumbotronContact,
   },
   props: {
     
@@ -10,7 +14,7 @@ export default {
 </script>
 
 <template>
-  <!-- AppContactPage -->
+  <JumbotronContact/>
   <section class="contact-main">
     <div class="left-column">
       <div>
@@ -31,7 +35,7 @@ export default {
           <input class="w-100" id="tel" name="tel" type="tel" placeholder="Phone*" required>
         </div>
         <div class="form-row">
-          <textarea name="note" rows=5 cols=58 placeholder="Your Comment*" required></textarea>
+          <textarea class="w-100" name="note" rows=5 placeholder="Your Comment*" required></textarea>
         </div>
         <div class="form-row">
           <button type="submit" id="calc-button">Send Message</button>
@@ -39,6 +43,9 @@ export default {
       </form>
     </div>
     <div class="right-column">
+      <div clas="google-maps">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d325373.49818100635!2d88.99182172678142!3d25.707627702357726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e32d3195baf511%3A0xf7a3fa6c9d0592d6!2sWEB%20IT%20RANGPUR!5e0!3m2!1sit!2sit!4v1706782169941!5m2!1sit!2sit" width="100%" height="674" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
   </section>
 </template>
@@ -49,16 +56,19 @@ export default {
 .contact-main {
   width: 70vw;
   height: 70vh;
-  margin: 0 auto;
+  margin: 5% auto;
   display: flex;
 }
 
 .left-column {
   border: none;
-  box-shadow: 10px #dedede;
-  width: 480px;
+  width: 48%;
   padding: 3%;
   line-height: 2.5;
+  box-shadow:  1px  1px 1px #dedede,
+              -1px -1px 10px #dedede,
+               1px -1px 10px #dedede,
+              -1px  1px 1px #dedede;
 
   h5 {
     color: #EF9E05;
@@ -84,6 +94,20 @@ export default {
   border: 1px solid black;
   width: 48%;
   margin-left: 4%;
+}
+
+.google-maps {
+  position: relative;
+  padding-bottom: 75%; /* Definisco l'aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+.google-maps > iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 
