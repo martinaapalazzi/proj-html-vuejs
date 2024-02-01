@@ -1,11 +1,12 @@
 <script>
-
+import AppContactPage from "./AppContactPage.vue";
 export default {
   data() {
     return {};
   },
   components: {
-  }
+    AppContactPage,
+  },
 };
 </script>
 <template>
