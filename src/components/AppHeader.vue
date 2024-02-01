@@ -2,6 +2,7 @@
 import { store } from "../store";
 import appAboutPage from "../components/AppAboutPage.vue";
 import { RouterView } from "vue-router";
+import AppAboutPage from "../components/AppAboutPage.vue";
 
 export default {
   data() {
@@ -210,7 +211,8 @@ export default {
       </div>
     </div>
   </div>
-  <appAboutPage />
+  <!-- <RouterLink :to="{ name: 'about' }">asd</RouterLink> -->
+  <!-- <appAboutPage /> -->
 </template>
 
 <style lang="scss" scoped>
