@@ -2,6 +2,7 @@
 import { store } from '../store';
 import appAboutPage from '../components/AppAboutPage.vue'
 
+
 export default {
   data() {
     return {
@@ -93,8 +94,6 @@ export default {
           dropdown: []
         },
       ],
-        
-
     };
   },
   components: {
@@ -121,165 +120,98 @@ export default {
   <div class="header-container">
 
     <div class="top-header">
-        <div class="left-side-header">
-          <div class="d-flex align-items-center">
-            <div>
-              <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
-            </div>
-            <p class="mb-0">
-              North baukhula, tala, USA
-            </p>
-          </div>
-          <div class="d-flex align-items-center">
-            <div>
-              <i class="fa-solid fa-envelope" style="color: #ffffff;"></i>
-            </div>
-            <a href="#">
-             demo@example.com
-            </a>
-          </div>
-        </div>
-        <div class="right-side-header">
+      <div class="left-side-header">
+        <div class="d-flex align-items-center">
           <div>
-            <div>
-              <i class="fa-regular fa-clock" style="color: #ffffff;"></i>
-            </div>
-            <div>
-              8.30AM-8.30PM
-            </div>
+            <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
           </div>
-          <div class="icons-header">
-            <i class="fa-brands fa-facebook-f"></i>
-            <i class="fa-brands fa-twitter"></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-pinterest-p"></i>
-          </div>
-      </div>
-    </div>
-    <div class="bottom-header">
-      <div class="nav-side">
-        <div>
-          <img src="../assets/img/logo.png" alt="">
+          <p class="mb-0">
+            North baukhula, tala, USA
+          </p>
         </div>
-        <div class="navbar-header">
-          <div class="d-flex align-items-center gap-3">
-            <div class="dropdown d-flex mb-0 gap-2">
-              <div v-for="(nav, index) in navbar" :key="index">
-                <a class="btn dropdown-toggle"
-                    href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  {{ nav.linkName }} 
-                </a>
-                <ul class="dropdown-menu" v-if="nav.dropdown.length > 0">
-                  <li v-for="(drop, index) in nav.dropdown" :key="index">
-                    <a class="dropdown-item" href="#">
-                      {{ drop.dropdownName }}
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+        <div class="d-flex align-items-center">
+          <div>
+            <i class="fa-solid fa-envelope" style="color: #ffffff;"></i>
           </div>
-          <!-- <nav class="d-flex">
-            <div class="dropdown">
-              <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Home
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Home-1</a></li>
-                <li><a class="dropdown-item" href="#">Home-2</a></li>
-                <li><a class="dropdown-item" href="#">Home-3</a></li>
-                <li><a class="dropdown-item" href="#">Home-landing</a></li>
-                <li><a class="dropdown-item" href="#">Home-video</a></li>
-              </ul>
-            </div>
-            <div class="dropdown">
-              <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                About
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">About</a></li>
-                <li><a class="dropdown-item" href="#">Team</a></li>
-                <li><a class="dropdown-item" href="#">Pricing tables</a></li>
-                <li><a class="dropdown-item" href="#">FAQ Page</a></li>
-                <li><a class="dropdown-item" href="#">Testimonials</a></li>
-              </ul>
-            </div>
-            <div>
-              <a class="btn" href="#">
-                Service
-              </a>
-            </div>
-            <div class="dropdown">
-              <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Portfolio
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Portfolio-2Column</a></li>
-                <li><a class="dropdown-item" href="#">Portfolio-3Column</a></li>
-                <li><a class="dropdown-item" href="#">Portfolio-4Column</a></li>
-              </ul>
-            </div>
-            <div class="dropdown">
-              <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Shop
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Shop</a></li>
-                <li><a class="dropdown-item" href="#">My Account</a></li>
-                <li><a class="dropdown-item" href="#">Cart</a></li>
-                <li><a class="dropdown-item" href="#">Checkout</a></li>
-              </ul>
-            </div>
-            <div class="dropdown">
-              <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Blog
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Blog left sidebar</a></li>
-                <li><a class="dropdown-item" href="#">Blog right sidebar</a></li>
-                <li><a class="dropdown-item" href="#">Blog right 2column</a></li>
-                <li><a class="dropdown-item" href="#">Blog left 2column</a></li>
-              </ul>
-            </div>
-            <div>
-              <a class="btn" href="#">
-                Contact
-              </a>
-            </div>
-          </nav> -->
+          <a href="#">
+            demo@example.com
+          </a>
         </div>
       </div>
-      <div class="shopping-side">
+      <div class="right-side-header">
         <div>
-          <i @click="showSearch()" class="search fa-solid fa-magnifying-glass"></i>
-        </div>
-        <div class="hidden-search" :class="{'d-block': flag == 1}">
-          <form action="">
-            <input type="text" placeholder="Type your keyboard">
-            <button class="search-submit-button" type="submit">
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
-          </form>
-          <div @click="returnHomePage()" class="exit-search">
-            <i class="fa-solid fa-x"></i>
+          <div>
+            <i class="fa-regular fa-clock" style="color: #ffffff;"></i>
+          </div>
+          <div>
+            8.30AM-8.30PM
           </div>
         </div>
-        <div class="position-relative">
-          <i class="cart fa-solid fa-cart-shopping"></i>
-          <div class="cart-list position-absolute top-0 start-100 translate-middle">
-            0 
-          </div>
-        </div>
-        <div>
-          <button>
-            ORDER NOW
-          </button>
+        <div class="icons-header">
+          <i class="fa-brands fa-facebook-f"></i>
+          <i class="fa-brands fa-twitter"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-pinterest-p"></i>
         </div>
       </div>
     </div>
-    <appAboutPage/>
   </div>
 
+
+  <div class="bottom-header">
+    <div class="nav-side">
+      <div>
+        <img src="../assets/img/logo.png" alt="">
+      </div>
+      <div class="navbar-header">
+        <div class="d-flex align-items-center gap-3">
+          <div class="dropdown d-flex mb-0 gap-2">
+            <div class="hover-drop" v-for="(nav, index) in navbar" :key="index">
+              <a class="btn dropdown-toggle"
+                  href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ nav.linkName }} 
+              </a>
+              <ul class="dropdown-menu" v-if="nav.dropdown.length > 0">
+                <li v-for="(drop, index) in nav.dropdown" :key="index">
+                  <a class="dropdown-item" href="#">
+                    {{ drop.dropdownName }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="shopping-side">
+      <div>
+        <i @click="showSearch()" class="search fa-solid fa-magnifying-glass"></i>
+      </div>
+      <div class="hidden-search" :class="{'d-block': flag == 1}">
+        <form action="">
+          <input type="text" placeholder="Type your keyboard">
+          <button class="search-submit-button" type="submit">
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
+        <div @click="returnHomePage()" class="exit-search">
+          <i class="fa-solid fa-x"></i>
+        </div>
+      </div>
+      <div class="position-relative">
+        <i class="cart fa-solid fa-cart-shopping"></i>
+        <div class="cart-list position-absolute top-0 start-100 translate-middle">
+          0 
+        </div>
+      </div>
+      <div>
+        <button>
+          ORDER NOW
+        </button>
+      </div>
+    </div>
+  </div>
+  <appAboutPage/>
 
 </template>
 
@@ -330,53 +262,72 @@ export default {
       }  
     }
   }
-  .bottom-header {
-    position: sticky;
-    background-color: white;
-    top: 0px;
-    height: 100px;
+}
+.bottom-header {
+  width: 100%;
+  z-index: 99;
+  position: sticky;
+  background-color: white;
+  top: 0px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  .nav-side {
     display: flex;
     align-items: center;
     justify-content: space-around;
 
-    .nav-side {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
+    .dropdown {
+      list-style: none;
 
-        .dropdown {
-          list-style: none;
-          .dropbtn:hover {
-            color: #EF9E05;
-          }
-        }
-    }
-    .shopping-side {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      gap: 20px;
-
-      .search {
-        cursor: pointer;
-        color: white;
-        background-color: #EF9E05;
-        text-align: center;
-        padding-top: 8px;
-        width: 35px;
-        height: 35px;
-        border-radius: 50px;
+      .dropdown-menu {
+        display: none;
       }
 
-      .hidden-search {
-        display: none;
-        .search-submit-button {
+      .hover-drop:hover .dropdown-menu {
+        display: block;
+      }
+      .dropdown-toggle:hover {
+        color: #EF9E05;
+        transition: 0.5s;
+      }
+      .dropdown-item:hover {
+        background-color: transparent;
+        color: #EF9E05;
+        transition: 0.5s;
+        margin-left: 10px;
+      }
+    }
+  }
+  .shopping-side {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+
+    .search {
+      cursor: pointer;
+      color: white;
+      background-color: #EF9E05;
+      text-align: center;
+      padding-top: 8px;
+      width: 35px;
+      height: 35px;
+      border-radius: 50px;
+    }
+
+    .hidden-search {
+      display: none;
+      background-color: rgba(0, 0, 0, 0.483);
+      .search-submit-button {
         color: black;
         background-color: transparent;
       }
 
       .exit-search {
-        width: 30px;
+         width: 30px;
         height: 30px;
         text-align: center;
         font-size: small;
@@ -385,35 +336,34 @@ export default {
         color: white;
         background-color: #EF9E05;
       }
-      }
-      .cart {
-        cursor: pointer;
-        color: #017166;
-        font-size: 1.5em;
-      }
+    }
+    .cart {
+      cursor: pointer;
+      color: #017166;
+      font-size: 1.5em;
+    }
 
-      .cart-list {
-        color: white;
-        width: 20px;
-        height: 20px;
-        text-align: center;
-        background-color: #EF9E05;
-        border-radius: 50px;
-      }
+    .cart-list {
+      color: white;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      background-color: #EF9E05;
+      border-radius: 50px;
+    }
 
-      button {
-        margin-left: 25px ;
-        background-color: #EF9E05;
-        color: white;
-        padding: 15px;
-        border: none;
-        border-radius: 0px 20px 0px 20px;
-      }
+    button {
+      margin-left: 25px ;
+      background-color: #EF9E05;
+      color: white;
+      padding: 15px;
+      border: none;
+      border-radius: 0px 20px 0px 20px;
+    }
 
-      button:hover {
-        background-color: #017166;
-        transition: 1s;
-      }
+    button:hover {
+      background-color: #017166;
+      transition: 1s;
     }
   }
 }

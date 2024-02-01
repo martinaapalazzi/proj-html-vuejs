@@ -1,4 +1,6 @@
 <script>
+import SingleProductApp from './SingleProductApp.vue';
+
 export default {
   data() {
     return {
@@ -59,6 +61,9 @@ export default {
         },
       ]
     };
+  },
+  components: {
+    SingleProductApp
   },
   props: {
 
@@ -145,6 +150,15 @@ export default {
       <img src="../assets/img/about-img.jpg" alt="">
     </div>
   </div>
+
+  <!-- <SingleProductApp
+            v-for="(elem, i) in store.food"
+            :path="elem.imgPath"
+            :name="elem.name"
+            :price="elem.price"
+            :oldPrice="elem.oldPrice"
+            :sale="elem.sale"
+          /> -->
 
   <div class="third-paragraph">
     <div class="row d-flex justify-content-between">
