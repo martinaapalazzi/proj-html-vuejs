@@ -1,11 +1,13 @@
 <script>
 import JumbotronContact from '../components/JumbotronContact.vue';
+import AppFooter from '../components/AppFooter.vue';
 export default {
   data() {
     return {};
   },
   components: {
     JumbotronContact,
+    AppFooter
   },
   props: {
     
@@ -48,6 +50,7 @@ export default {
       </div>
     </div>
   </section>
+  <AppFooter/>
 </template>
 
 <style lang="scss" scoped>
@@ -109,6 +112,4 @@ export default {
   width: 100% !important;
   height: 100% !important;
 }
-
-
 </style>

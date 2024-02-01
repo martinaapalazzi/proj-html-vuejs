@@ -1,11 +1,10 @@
 <script>
-import AppContactPage from './AppContactPage.vue';
+
 export default {
   data() {
     return {};
   },
   components: {
-    AppContactPage
   }
 };
 </script>
@@ -172,16 +171,6 @@ export default {
       </div>
     </section>
   </footer>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <AppContactPage/>
 </template>
 <style lang="scss" scoped>
 #footer-top {
