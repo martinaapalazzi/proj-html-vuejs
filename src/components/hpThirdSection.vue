@@ -16,7 +16,47 @@ export default {
     };
   },
   props: {},
-  methods: {},
+  methods: {
+    selectItems(i) {
+      if (i == 0) {
+        // L'ARRAY RIMANE INVARIATO
+        store.food = store.foodBackup;
+        return store.food;
+      } else if (i == 1) {
+        // L'ARRAY PRENDE SOLO GLI OGGETTI CON TYPE: 'APPLE'
+        store.food = store.foodBackup;
+        const elemAppleArray = store.food.filter((elem) =>
+          elem.type.includes("apple")
+        );
+        store.food = elemAppleArray;
+        return store.food;
+      } else if (i == 2) {
+        // L'ARRAY PRENDE SOLO GLI OGGETTI NEL CUI ARRAY TYPE È PRESENTE 'FOOD'
+        store.food = store.foodBackup;
+        const elemFoodArray = store.food.filter((elem) =>
+          elem.type.includes("food")
+        );
+        store.food = elemFoodArray;
+        return store.food;
+      } else if (i == 3) {
+        // L'ARRAY PRENDE SOLO GLI OGGETTI NEL CUI ARRAY TYPE È PRESENTE 'ORANGE'
+        store.food = store.foodBackup;
+        const elemOrangeArray = store.food.filter((elem) =>
+          elem.type.includes("orange")
+        );
+        store.food = elemOrangeArray;
+        return store.food;
+      } else if (i == 4) {
+        // L'ARRAY PRENDE SOLO GLI OGGETTI NEL CUI ARRAY TYPE È PRESENTE 'VEGETABLE'
+        store.food = store.foodBackup;
+        const elemVegetableArray = store.food.filter((elem) =>
+          elem.type.includes("vegetable")
+        );
+        store.food = elemVegetableArray;
+        return store.food;
+      }
+    },
+  },
   components: {
     SingleProductApp,
   },
@@ -32,9 +72,18 @@ export default {
       </h1>
       <div class="d-flex justify-content-center mt-5 mb-5">
         <ul class="d-flex p-0">
-          <li v-for="(elem, i) in thirdSectionMainItemsList" class="ms-3 me-3">
+          <li
+            @click="selectItems(i)"
+            v-for="(elem, i) in thirdSectionMainItemsList"
+            class="ms-3 me-3"
+          >
             {{ elem }}
           </li>
+          <!-- <li class="ms-3 me-3">All Product</li>
+          <li class="ms-3 me-3">Apple</li>
+          <li class="ms-3 me-3">Food</li>
+          <li class="ms-3 me-3">Orange</li>
+          <li class="ms-3 me-3">Vegetabled</li> -->
         </ul>
       </div>
       <div class="row ps-5 pe-5">
