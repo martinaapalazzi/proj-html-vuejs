@@ -13,10 +13,12 @@ export default {
 <template>
   <section id="seventh-section">
     <div class="container mb-5">
-      <h4 class="my-orange text-center">Running week top selling</h4>
-      <h1 class="text-center my-green mb-5">
-        TOP <span class="my-orange">TRENDING</span> ORGANIC FOOD
-      </h1>
+      <div class="h-container mb-5 d-flex flex-column justify-content-center">
+        <h4 class="my-orange text-center">Running week top selling</h4>
+        <h1 class="text-center my-green">
+          TOP <span class="my-orange">TRENDING</span> ORGANIC FOOD
+        </h1>
+      </div>
       <div class="row ps-5 pe-5">
         <div
           v-for="(elem, i) in store.food.slice(0, 4)"
@@ -70,6 +72,13 @@ export default {
   display: block;
 }
 #seventh-section {
+  .h-container {
+    height: 150px;
+    background-image: url("../assets/img/title-shap.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
   .my-shadow {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
       rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
