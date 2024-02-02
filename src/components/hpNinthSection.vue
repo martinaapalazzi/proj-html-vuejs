@@ -44,10 +44,12 @@ export default {
 <template>
   <section id="ninth-section">
     <div class="container special-margin">
-      <h4 class="my-orange text-center">The news whatwe have</h4>
-      <h1 class="text-center my-green mb-5">
-        GOGREEN LATEST <span class="my-orange">NEWS</span> FEED
-      </h1>
+      <div class="h-container mb-5 d-flex flex-column justify-content-center">
+        <h4 class="my-orange text-center">The news whatwe have</h4>
+        <h1 class="text-center my-green">
+          GOGREEN LATEST <span class="my-orange">NEWS</span> FEED
+        </h1>
+      </div>
       <div class="row">
         <div v-for="(elem, i) in latestNewsFeeds" class="col-4">
           <div class="mb-3">
@@ -91,6 +93,13 @@ export default {
 }
 
 #ninth-section {
+  .h-container {
+    height: 150px;
+    background-image: url("../assets/img/title-shap.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
   .my-grey {
     color: #999999;
   }

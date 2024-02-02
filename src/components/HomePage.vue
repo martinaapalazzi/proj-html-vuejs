@@ -47,7 +47,7 @@ export default {
     <hpFifthSection />
     <!-- ---------- -->
     <hpSixthSection />
-    <!-- NELLA SESTA SEZIONE MANCA IL BORDO DESTRO A ZIG-ZAG -->
+    <!-- NELLA SESTA SEZIONE MANCA IL BORDO DESTRO A ZIG-ZAG. COME FAR AVVIARE L'INCREMENTO DEI NUMERI NON AL CARICAMENTO DELLA PAGINA MA QUANDO LA SCROLLBAR ARRIVA ALLA SEZIONE DESIDERATA? -->
     <hpSeventhSection />
     <!-- ---------- -->
     <hpEighthSection />
