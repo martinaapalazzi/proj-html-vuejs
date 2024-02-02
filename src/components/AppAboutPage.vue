@@ -1,6 +1,7 @@
 <script>
 import hpThirdSection from "./hpThirdSection.vue";
 import { store } from "../store.js";
+import { RouterView } from "vue-router";
 
 export default {
   data() {
@@ -66,6 +67,7 @@ export default {
   },
   components: {
     hpThirdSection,
+    RouterView
   },
   props: {},
 };
@@ -133,7 +135,9 @@ export default {
         </p>
       </div>
       <div>
-        <button>ABOUT US</button>
+        <a href="#">
+          <button>ABOUT US</button>
+        </a>
       </div>
     </div>
     <div class="container-aside-img col-8">
@@ -158,7 +162,9 @@ export default {
           but not organic than bought organic food.
         </div>
         <div>
-          <button>ABOUT US</button>
+          <a href="#">
+            <button>ABOUT US</button>
+          </a>
         </div>
       </div>
       <div class="col-8 fruit-grid">
@@ -215,7 +221,9 @@ export default {
           </div>
         </div>
         <div>
-          <button>ABOUT US</button>
+          <a href="">
+            <button>ABOUT US</button>
+          </a>
         </div>
       </div>
     </div>

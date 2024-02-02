@@ -1,8 +1,7 @@
 <script>
 import { store } from "../store";
-import appAboutPage from "../components/AppAboutPage.vue";
 import { RouterView } from "vue-router";
-import AppAboutPage from "../components/AppAboutPage.vue";
+import appAboutPage from "../components/AppAboutPage.vue";
 
 export default {
   data() {
@@ -153,7 +152,9 @@ export default {
   <div class="bottom-header">
     <div class="nav-side">
       <div>
-        <img src="../assets/img/logo.png" alt="" />
+        <RouterLink :to="{ name: 'home' }">
+          <img src="../assets/img/logo.png" alt="" />
+        </RouterLink>
       </div>
       <div class="navbar-header">
         <div class="d-flex align-items-center gap-3">
@@ -171,7 +172,7 @@ export default {
                 {{ nav.linkName }}
               </a>
               <RouterLink
-                class="btn"
+                class="btn special-contact-hover"
                 v-if="index == 4"
                 :to="{ name: 'contact' }"
                 >{{ nav.linkName }}</RouterLink
@@ -220,9 +221,8 @@ export default {
           class="offcanvas-body d-flex align-items-center justify-content-center"
         >
           <div :class="{ 'd-block': flag == 1 }">
-            <label class="fs-1 text" for="">Type your keyboard</label>
             <form action="">
-              <input class="search-user" type="text" placeholder="" />
+              <input class="search-user fs-1" type="text" placeholder="Type your keyboard" />
               <button class="search-submit-button" type="submit">
                 <i class="fa-solid fa-arrow-right"></i>
               </button>
@@ -371,7 +371,7 @@ export default {
     .hidden-search {
       //display: none;
       color: white;
-      background-color: rgba(0, 0, 0, 0.483);
+      background-color: rgba(0, 0, 0, 0.772);
       .search-submit-button {
         color: black;
         background-color: transparent;
@@ -383,11 +383,17 @@ export default {
         color: white;
         font-size: 20px;
         background-color: transparent;
+        border: 0px ;
+        box-shadow: none;
+      }
+      .search-user:focus {
+        outline: none;
       }
 
-      .exit-search {
+      .search-close-button {
         width: 30px;
         height: 30px;
+        margin-left: 40%;
         text-align: center;
         font-size: small;
         padding-top: 5px;
