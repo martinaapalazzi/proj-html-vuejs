@@ -72,7 +72,7 @@ export default {
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d325373.49818100635!2d88.99182172678142!3d25.707627702357726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e32d3195baf511%3A0xf7a3fa6c9d0592d6!2sWEB%20IT%20RANGPUR!5e0!3m2!1sit!2sit!4v1706782169941!5m2!1sit!2sit"
           width="100%"
-          height="674"
+          height="660"
           style="border: 0"
           allowfullscreen=""
           loading="lazy"
@@ -88,14 +88,14 @@ export default {
 
 .contact-main {
   width: 70vw;
-  // height: 70vh;
   height: 600px;
-  margin: 5% auto;
+  margin: 5% auto 1%;
   display: flex;
 }
 
 .left-column {
   border: none;
+  height: 660px;
   width: 48%;
   padding: 3%;
   line-height: 2.5;
@@ -123,14 +123,13 @@ export default {
 }
 
 .right-column {
-  // border: 1px solid black;
   width: 48%;
   margin-left: 4%;
 }
 
 .google-maps {
   position: relative;
-  padding-bottom: 75%; /* Definisco l'aspect ratio */
+  padding-bottom: 75%;
   height: 0;
   overflow: hidden;
 }

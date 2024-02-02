@@ -173,6 +173,7 @@ export default {
     </section>
   </footer>
 </template>
+
 <style lang="scss" scoped>
 #footer-top {
   height: 20%;
@@ -206,6 +207,8 @@ export default {
 .footer-container {
   height: 520px;
   color: white;
+  margin-top: 5%;
+  border-top: 0.2px solid transparent;
 }
 #footer-main {
   background-image: url("../assets/img/footer-bg.jpg");
