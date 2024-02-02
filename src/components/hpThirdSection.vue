@@ -7,54 +7,64 @@ export default {
     return {
       store,
       thirdSectionMainItemsList: [
-        "All Product",
-        "Apple",
-        "Food",
-        "Orange",
-        "Vegetable",
+        { id: "all", name: "All Product" },
+        { id: "apple", name: "Apple" },
+        { id: "food", name: "Food" },
+        { id: "orange", name: "Orange" },
+        { id: "vegetable", name: "Vegetable" },
       ],
+      filteredStoreFood: [...store.food],
     };
   },
   props: {},
   methods: {
-    selectItems(i) {
-      if (i == 0) {
-        // L'ARRAY RIMANE INVARIATO
-        store.food = store.foodBackup;
-        return store.food;
-      } else if (i == 1) {
-        // L'ARRAY PRENDE SOLO GLI OGGETTI CON TYPE: 'APPLE'
-        store.food = store.foodBackup;
-        const elemAppleArray = store.food.filter((elem) =>
-          elem.type.includes("apple")
-        );
-        store.food = elemAppleArray;
-        return store.food;
-      } else if (i == 2) {
-        // L'ARRAY PRENDE SOLO GLI OGGETTI NEL CUI ARRAY TYPE È PRESENTE 'FOOD'
-        store.food = store.foodBackup;
-        const elemFoodArray = store.food.filter((elem) =>
-          elem.type.includes("food")
-        );
-        store.food = elemFoodArray;
-        return store.food;
-      } else if (i == 3) {
-        // L'ARRAY PRENDE SOLO GLI OGGETTI NEL CUI ARRAY TYPE È PRESENTE 'ORANGE'
-        store.food = store.foodBackup;
-        const elemOrangeArray = store.food.filter((elem) =>
-          elem.type.includes("orange")
-        );
-        store.food = elemOrangeArray;
-        return store.food;
-      } else if (i == 4) {
-        // L'ARRAY PRENDE SOLO GLI OGGETTI NEL CUI ARRAY TYPE È PRESENTE 'VEGETABLE'
-        store.food = store.foodBackup;
-        const elemVegetableArray = store.food.filter((elem) =>
-          elem.type.includes("vegetable")
-        );
-        store.food = elemVegetableArray;
-        return store.food;
+    selectItems(elemId) {
+      if (elemId == "all") {
+        this.filteredStoreFood = [...store.food];
+        return;
       }
+
+      this.filteredStoreFood = store.food.filter((elem) => {
+        return elem.type.includes(elemId);
+      });
+
+      // if (i == 0) {
+      //   // L'ARRAY RIMANE INVARIATO
+      //   store.food = store.foodBackup;
+      //   return store.food;
+      // } else if (i == 1) {
+      //   // L'ARRAY PRENDE SOLO GLI OGGETTI CON TYPE: 'APPLE'
+      //   store.food = store.foodBackup;
+      //   const elemAppleArray = store.food.filter((elem) =>
+      //     elem.type.includes("apple")
+      //   );
+      //   store.food = elemAppleArray;
+      //   return store.food;
+      // } else if (i == 2) {
+      //   // L'ARRAY PRENDE SOLO GLI OGGETTI NEL CUI ARRAY TYPE È PRESENTE 'FOOD'
+      //   store.food = store.foodBackup;
+      //   const elemFoodArray = store.food.filter((elem) =>
+      //     elem.type.includes("food")
+      //   );
+      //   store.food = elemFoodArray;
+      //   return store.food;
+      // } else if (i == 3) {
+      //   // L'ARRAY PRENDE SOLO GLI OGGETTI NEL CUI ARRAY TYPE È PRESENTE 'ORANGE'
+      //   store.food = store.foodBackup;
+      //   const elemOrangeArray = store.food.filter((elem) =>
+      //     elem.type.includes("orange")
+      //   );
+      //   store.food = elemOrangeArray;
+      //   return store.food;
+      // } else if (i == 4) {
+      //   // L'ARRAY PRENDE SOLO GLI OGGETTI NEL CUI ARRAY TYPE È PRESENTE 'VEGETABLE'
+      //   store.food = store.foodBackup;
+      //   const elemVegetableArray = store.food.filter((elem) =>
+      //     elem.type.includes("vegetable")
+      //   );
+      //   store.food = elemVegetableArray;
+      //   return store.food;
+      // }
     },
   },
   components: {
@@ -73,23 +83,18 @@ export default {
       <div class="d-flex justify-content-center mt-5 mb-5">
         <ul class="d-flex p-0">
           <li
-            @click="selectItems(i)"
-            v-for="(elem, i) in thirdSectionMainItemsList"
+            @click="selectItems(elem.id)"
+            v-for="(elem, _) in thirdSectionMainItemsList"
             class="ms-3 me-3"
           >
-            {{ elem }}
+            {{ elem.name }}
           </li>
-          <!-- <li class="ms-3 me-3">All Product</li>
-          <li class="ms-3 me-3">Apple</li>
-          <li class="ms-3 me-3">Food</li>
-          <li class="ms-3 me-3">Orange</li>
-          <li class="ms-3 me-3">Vegetabled</li> -->
         </ul>
       </div>
       <div class="row ps-5 pe-5">
         <SingleProductApp
           class="my-margin-bottom"
-          v-for="(elem, i) in store.food"
+          v-for="(elem, i) in filteredStoreFood"
           :path="elem.imgPath"
           :name="elem.name"
           :price="elem.price"
