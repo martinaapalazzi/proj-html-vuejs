@@ -13,6 +13,9 @@ export default {
         { imgPath: "/src/assets/img/fe2.jpg", text: "Organic orange" },
         { imgPath: "/src/assets/img/fe3.jpg", text: "Fresh Juice" },
       ],
+      // clock: null,
+      // with: 0,
+      // height: 0,
     };
   },
   props: {},
@@ -40,13 +43,23 @@ export default {
         firstItem,
       ];
     },
+    // incrementWidthHeight() {
+    //   this.width += 10;
+    //   this.height += 10;
+    //   if (this.width == 100 && this.height == 100) {
+    //     clearInterval(clock);
+    //   }
+    // },
   },
 };
 </script>
 
 <template>
   <section id="second-section" class="mb-5">
-    <div class="my-container">
+    <div class="my-container position-relative">
+      <div class="position-absolute fe-shap-container">
+        <img src="../assets/img/fe-shap1-1.png" alt="" />
+      </div>
       <div class="row mb-3">
         <div class="col-6">
           <h1 class="my-green">
@@ -126,6 +139,29 @@ export default {
   .my-container {
     width: 70vw;
     margin: 0 auto;
+    .fe-shap-container {
+      animation-name: right-and-left;
+      animation-duration: 4.5s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    @keyframes right-and-left {
+      0% {
+        right: -330px;
+      }
+      25% {
+        right: -360px;
+      }
+      50% {
+        right: -330px;
+      }
+      75% {
+        right: -300px;
+      }
+      100% {
+        right: -330px;
+      }
+    }
   }
   h1 {
     font-weight: bold;
