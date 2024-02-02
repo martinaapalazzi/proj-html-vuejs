@@ -13,6 +13,9 @@ export default {
         { imgPath: "/src/assets/img/fe2.jpg", text: "Organic orange" },
         { imgPath: "/src/assets/img/fe3.jpg", text: "Fresh Juice" },
       ],
+      // clock: null,
+      // with: 0,
+      // height: 0,
     };
   },
   props: {},
@@ -40,6 +43,13 @@ export default {
         firstItem,
       ];
     },
+    // incrementWidthHeight() {
+    //   this.width += 10;
+    //   this.height += 10;
+    //   if (this.width == 100 && this.height == 100) {
+    //     clearInterval(clock);
+    //   }
+    // },
   },
 };
 </script>
