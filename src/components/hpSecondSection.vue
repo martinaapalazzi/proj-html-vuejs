@@ -46,7 +46,10 @@ export default {
 
 <template>
   <section id="second-section" class="mb-5">
-    <div class="my-container">
+    <div class="my-container position-relative">
+      <div class="position-absolute fe-shap-container">
+        <img src="../assets/img/fe-shap1-1.png" alt="" />
+      </div>
       <div class="row mb-3">
         <div class="col-6">
           <h1 class="my-green">
@@ -126,6 +129,29 @@ export default {
   .my-container {
     width: 70vw;
     margin: 0 auto;
+    .fe-shap-container {
+      animation-name: right-and-left;
+      animation-duration: 4.5s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    @keyframes right-and-left {
+      0% {
+        right: -330px;
+      }
+      25% {
+        right: -360px;
+      }
+      50% {
+        right: -330px;
+      }
+      75% {
+        right: -300px;
+      }
+      100% {
+        right: -330px;
+      }
+    }
   }
   h1 {
     font-weight: bold;
